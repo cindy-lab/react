@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
+import Dashboard from './Dashboard';
 
 class App extends Component{
   constructor(props){
     super(props);
     this.state={
       uname: "",
-      pass:""
+      pass:"",
+      bool: false
     };
   }
   UnameHandler = (e) => {
@@ -14,17 +16,27 @@ class App extends Component{
   PassHandler = (e) => {
     this.setState({pass: e.target.value})
   }
+  BoolChange =(e) => {
+    this.setState({bool:true})
+  }
   render() {
-    const {uname, pass}=this.state;
-  return(
+    const {bool}=this.state;  
+    if(!bool){
+      return(
     <div>
       <h1>Stargaze</h1>
-      <h2>{uname}</h2>
-      <h2>{pass}</h2>
       login: <input type="text" onChange={this.UnameHandler}/><br/>
       password: <input type="password" onChange={this.PassHandler}/>
+      <br/><button type="submit" onClick={this.BoolChange}>Login</button>
     </div>
   )
+    }
+    else {
+      return(
+        <Dashboard/>
+      )
+    }
+  
 }
 }
 export default App
