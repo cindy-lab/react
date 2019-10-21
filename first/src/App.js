@@ -36,7 +36,6 @@ class App extends Component{
         <Dashboard/>
       )
     }
-  
 }
 }
 export default App
