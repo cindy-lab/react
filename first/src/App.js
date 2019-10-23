@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Dashboard from './Dashboard';
 
+
 class App extends Component{
   constructor(props){
     super(props);
@@ -33,7 +34,7 @@ class App extends Component{
     }
     else {
       return(
-        <Dashboard/>
+        <Dashboard username={this.state.uname}/>
       )
     }
 }

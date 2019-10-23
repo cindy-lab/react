@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Dashboard.scss";
 
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ class Dashboard extends Component {
     const { pic } = this.state;
     return (
       <div>
-        <h1>Welcome to Stargaze</h1>
+        <h1>Welcome to Stargaze {this.state.username}</h1>
           <div id="profiles">
           <h2>Profile</h2>
           <h2>Timeline</h2>
