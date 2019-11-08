@@ -9,7 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 
-<<<<<<< HEAD
+
 const currencies = [
   {
     value: 'Month1',
@@ -95,10 +95,6 @@ const useStyles = makeStyles(theme => ({
 export default function OutlinedTextFields() {
 
   const [goDashboard, setGoDashboard] = useState(false);
-  // var changeDash = () =>{
-  //   this.setState({goDashboard: true})
-  // }
-
   const classes = useStyles();
   const [values, setValues] = React.useState({
     name: '',
@@ -114,6 +110,7 @@ export default function OutlinedTextFields() {
   <div id="background">
     <form className={classes.container} noValidate autoComplete="off">
     <Header1 position="fixed"/>
+    <br></br>
       <TextField
         id="outlined-dense"
         label="Firstname"
@@ -135,20 +132,40 @@ export default function OutlinedTextFields() {
         margin="dense"
         variant="outlined"
       />
-
       <TextField
         id="outlined-dense"
         label="Phone Number"
-        value={values.age}
-        onChange={handleChange('age')}
-        type="number"
+        type="string"
         className={clsx(classes.textField, classes.dense)}
-        InputLabelProps={{
-          shrink: true,
-        }}
         margin="dense"
         variant="outlined"
       />
+       <TextField
+        id="outlined-dense"
+        label="Email"
+        className={clsx(classes.textField, classes.dense)}
+        margin="dense"
+        variant="outlined"
+        type = "email"
+      />
+       <TextField
+        id="outlined-dense"
+        label="Password"
+        className={clsx(classes.textField, classes.dense)}
+        margin="dense"
+        variant="outlined"
+        type = "password"
+      />
+       <TextField
+        id="outlined-dense"
+        label="Re-type Password"
+        className={clsx(classes.textField, classes.dense)}
+        margin="dense"
+        variant="outlined"
+        type = "password"
+      />
+
+      
       <TextField
         id="outlined-select-currency"
         select
@@ -171,99 +188,15 @@ export default function OutlinedTextFields() {
           </MenuItem>
         ))}
       </TextField>
-      <Button variant="contained" color="primary" className={classes.button} onClick={() => setGoDashboard(true)}>
-        Sign in
+      <Button variant="contained" color="primary" className={classes.button} onClick={() =>  setGoDashboard(true)}>
+        Sign up
       </Button>
     </form>
     </div>
-  );
-=======
-class App extends Component{
-  constructor(props){
-    super(props);
-    this.state={
-      uname: "",
-      pass:"",
-      bool: false
-    };
-  }
-  UnameHandler = (e) => {
-    this.setState({uname: e.target.value})
-  }
-  PassHandler = (e) => {
-    this.setState({pass: e.target.value})
->>>>>>> edcd96d3ce74355723f9ca049af44ddd1218816a
-  }
+  )}
   else {
     return(
       <Dashboard/>
     )
   }
-<<<<<<< HEAD
-=======
-  render() {
-    const {bool}=this.state;  
-    if(!bool){
-      return(
-    <div>
-      <h1>Stargaze</h1>
-      login: <input type="text" onChange={this.UnameHandler}/><br/>
-      password: <input type="password" onChange={this.PassHandler}/>
-      <br/><button type="submit" onClick={this.BoolChange}>Login</button>
-    </div>
-  )
-    }
-    else {
-      return(
-        <Dashboard username={this.state.uname}/>
-      )
-    }
 }
->>>>>>> edcd96d3ce74355723f9ca049af44ddd1218816a
-}
-
-
-
-
-
-// import React, {Component} from 'react'
-// import Dashboard from './Dashboard';
-
-// class App extends Component{
-//   constructor(props){
-//     super(props);
-//     this.state={
-//       uname: "",
-//       pass:"",
-//       bool: false
-//     };
-//   }
-//   UnameHandler = (e) => {
-//     this.setState({uname: e.target.value})
-//   }
-//   PassHandler = (e) => {
-//     this.setState({pass: e.target.value})
-//   }
-//   BoolChange =(e) => {
-//     this.setState({bool:true})
-//   }
-//   render() {
-//     const {bool}=this.state; 
-//     if(!bool){
-//       return(
-//     <div>
-//       <h1>Stargaze</h1>
-//       login: <input type="text" onChange={this.UnameHandler}/><br/>
-//       password: <input type="password" onChange={this.PassHandler}/>
-//       <br/><button type="submit" onClick={this.BoolChange}>Login</button>
-//     </div>
-//   )
-//     }
-//     else {
-//       return(
-//         <Dashboard/>
-//       )
-//     }
-// }
-// }
-// export default App

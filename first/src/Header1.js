@@ -153,7 +153,7 @@ export default function PrimarySearchAppBar() {
           />
           </form>
           <Button variant="contained" color="tertiary" className={classes.button} onClick={() => setGoDashboard(true)}>
-            Log in
+            Sign in
           </Button>
 
           <div className={classes.sectionMobile}>
