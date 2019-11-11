@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from './Header';
-import Option from './Option';
+import Header from '../Header';
+import Option from '../Option';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Skeleton from './Skeleton';
+import Skeleton from '../Skeleton';
 
 
 

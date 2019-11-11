@@ -1,13 +1,15 @@
-import React,{useState} from 'react';
-import Dashboard from './Dashboard';
+import React, {useState} from 'react';
+import Home from './component/Home';
 import Header1 from './Header1';
 import clsx from 'clsx';
-import'./Dashboard.scss';
+import './component/Home.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
+import Gallery from './component/Gallery';
+import StarFeed from './component/StarFeed';
+import Stats from './component/Stats';
 
 
 const currencies = [
@@ -94,7 +96,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function OutlinedTextFields() {
 
-  const [goDashboard, setGoDashboard] = useState(false);
+  const [goHome, setgoHome] = useState(0);
   const classes = useStyles();
   const [values, setValues] = React.useState({
     name: '',
@@ -105,7 +107,7 @@ export default function OutlinedTextFields() {
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
   };
-  if(!goDashboard){
+  if(!goHome){
   return (
   <div id="background">
     <form className={classes.container} noValidate autoComplete="off">
@@ -188,7 +190,7 @@ export default function OutlinedTextFields() {
           </MenuItem>
         ))}
       </TextField>
-      <Button variant="contained" color="primary" className={classes.button} onClick={() =>  setGoDashboard(true)}>
+      <Button variant="contained" color="primary" className={classes.button} onClick={() =>  setgoHome(true)}>
         Sign up
       </Button>
     </form>
@@ -196,7 +198,7 @@ export default function OutlinedTextFields() {
   )}
   else {
     return(
-      <Dashboard/>
+      <Home/>
     )
   }
 }

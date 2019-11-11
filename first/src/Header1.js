@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import GradeIcon from '@material-ui/icons/Grade';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Dashboard from './Dashboard';
+import Home from './component/Home';
 
 
 const useStyles = makeStyles(theme => ({
@@ -100,7 +100,7 @@ export default function PrimarySearchAppBar() {
     name: '',
     password:'',
   });
-  const [goDashboard, setGoDashboard] = useState(false);
+  const [goHome, setHome] = useState(false);
 
   //the email/# calling the values
   const handleChange = name => event => {
@@ -113,8 +113,8 @@ export default function PrimarySearchAppBar() {
   }
   const classes = useStyles();
 
-  //if goDashboard is false it will not proceed if true it will go to the dashboard
-  if(!goDashboard){
+  //if goHome is false it will not proceed if true it will go to the dashboard
+  if(!goHome){
   return (
     <div >
       <AppBar position="fixed" className={classes.appBar}>
@@ -152,7 +152,7 @@ export default function PrimarySearchAppBar() {
             variant="filled"
           />
           </form>
-          <Button variant="contained" color="tertiary" className={classes.button} onClick={() => setGoDashboard(true)}>
+          <Button variant="contained" color="tertiary" className={classes.button} onClick={() => setHome(true)}>
             Sign in
           </Button>
 
@@ -164,7 +164,7 @@ export default function PrimarySearchAppBar() {
   );}
   else{
     return(
-      <Dashboard/>
+      <Home/>
     )
   }
 }
