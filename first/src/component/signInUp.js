@@ -1,114 +1,110 @@
 import React, {useState} from 'react';
-import Home from './component/Home';
-import Header1 from './Header1';
+import Header1 from  '../Header1';
 import clsx from 'clsx';
-import './component/Home.scss';
+// import './component/Home.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import signInUp from './component/signInUp';
-
 
 const currencies = [
-  {
-    value: 'Month1',
-    label: 'January',
-  },
-  {
-    value: 'Month2',
-    label: 'February',
-  },
-  {
-    value: 'Month3',
-    label: 'March',
-  },
-  {
-    value: 'Month4',
-    label: 'April',
-  },
-  {
-    value: 'Month5',
-    label: 'May',
-  },
-  {
-    value: 'Month6',
-    label: 'June',
-  },
-  {
-    value: 'Month7',
-    label: 'July',
-  },
-  {
-    value: 'Month8',
-    label: 'August',
-  },
-  {
-    value: 'Month9',
-    label: 'September',
-  },
-  {
-    value: 'Mont10',
-    label: 'October',
-  },
-  {
-    value: 'month11',
-    label: 'November',
-  },
-  {
-    value: 'month12',
-    label: 'December',
-  },
-];
+    {
+      value: 'Month1',
+      label: 'January',
+    },
+    {
+      value: 'Month2',
+      label: 'February',
+    },
+    {
+      value: 'Month3',
+      label: 'March',
+    },
+    {
+      value: 'Month4',
+      label: 'April',
+    },
+    {
+      value: 'Month5',
+      label: 'May',
+    },
+    {
+      value: 'Month6',
+      label: 'June',
+    },
+    {
+      value: 'Month7',
+      label: 'July',
+    },
+    {
+      value: 'Month8',
+      label: 'August',
+    },
+    {
+      value: 'Month9',
+      label: 'September',
+    },
+    {
+      value: 'Mont10',
+      label: 'October',
+    },
+    {
+      value: 'month11',
+      label: 'November',
+    },
+    {
+      value: 'month12',
+      label: 'December',
+    },
+  ];
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    marginTop:65,
-  },
-  textField: {
-    marginLeft: theme.spacing(100),
-    marginRight: theme.spacing(10),
-    position: "relative",
-  },
-  dense: {
-    marginTop: theme.spacing(2),
-    marginRight: theme.spacing(30),
-  },
-  menu: {
-    width: 200,
-    marginLeft:100,
-    marginRight:10,
-  },
-  button: {
-    marginLeft: theme.spacing(100),
-    marginRight: theme.spacing(1),
-  },
-  input: {
-    display: 'none',
-  },
-}));
+  const useStyles = makeStyles(theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      flexGrow: 1,
+      padding: theme.spacing(3),
+      marginTop:65,
+    },
+    textField: {
+      marginLeft: theme.spacing(100),
+      marginRight: theme.spacing(10),
+      position: "relative",
+    },
+    dense: {
+      marginTop: theme.spacing(2),
+      marginRight: theme.spacing(30),
+    },
+    menu: {
+      width: 200,
+      marginLeft:100,
+      marginRight:10,
+    },
+    button: {
+      marginLeft: theme.spacing(100),
+      marginRight: theme.spacing(1),
+    },
+    input: {
+      display: 'none',
+    },
+  }));
 
-export default function OutlinedTextFields() {
+  export default function OutlinedTextFields() {
 
-  const [goHome, setgoHome] = useState(0);
-  const classes = useStyles();
-  const [values, setValues] = React.useState({
-    name: '',
-    age: '',
-    currency: 'Month1',
-  });
-
-  const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
-  };
-  if(!goHome){
-  return (
-  <div id="background">
-    <form className={classes.container} noValidate autoComplete="off">
+    const [ setgoHome] = useState(0);
+    const classes = useStyles();
+    const [values, setValues] = React.useState({
+      name: '',
+      age: '',
+      currency: 'Month1',
+    });
+  
+    const handleChange = name => event => {
+      setValues({ ...values, [name]: event.target.value });
+    };
+    return(
+    <div id="background">
+        <form className={classes.container} noValidate autoComplete="off">
     <Header1 position="fixed"/>
     <br></br>
       <TextField
@@ -189,14 +185,9 @@ export default function OutlinedTextFields() {
         ))}
       </TextField>
       <Button variant="contained" color="primary" className={classes.button} onClick={() =>  setgoHome(true)}>
-        Sign in
+        Sign up
       </Button>
     </form>
     </div>
-  )}
-  else  {
-    return(
-      <Home/>
-    )
-  }
+    );
 }

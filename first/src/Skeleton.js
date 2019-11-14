@@ -12,6 +12,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Skeleton from '@material-ui/lab/Skeleton';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
+import starRating from './component/starRating';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -25,6 +27,30 @@ const useStyles = makeStyles(theme => ({
     margin:1,
   }
 }));
+
+const labels = {
+  
+  1: 'Nice',
+ 
+  2: 'Good',
+
+  3: 'Better',
+
+  4: 'Best',
+  
+  5: 'Excellent',
+};
+
+function IconContainer(props) {
+  const { value, ...other } = props;
+
+  return (
+    <Tooltip title={labels[value] || ''}>
+      <span {...other} />
+    </Tooltip>
+  );
+}
+
 
 function Media(props) {
   const { loading = false } = props;
@@ -144,8 +170,9 @@ function Media2(props) {
               "Be brave and be bold no matter what failure of chances may face in your passion"
             }
           </Typography>
+          
         )}
-        <Box component="fieldset" mb={3} borderColor="transparent">
+        {/* <Box >
         <Rating
           name="simple-controlled"
           size="large"
@@ -153,10 +180,28 @@ function Media2(props) {
           onChange={(event, newValue) => {
             setValue(newValue);
           }}
+          IconContainerComponent={IconContainer}
+        />
+        
+         </starRating>
+      </Box> */}
+        <Box component="fieldset" mb={3} borderColor="transparent">
+        {/* <Typography component="legend">Rate</Typography> */}
+        <Rating
+          name="hover-tooltip"
+          size = "large"
+          value={value}
+          onChange = {(event, newValue) => {
+            setValue(newValue);
+          }}
+         
+          IconContainerComponent={IconContainer}
         />
       </Box>
+      
       </CardContent>
     </Card>
+    
   );
 }
 

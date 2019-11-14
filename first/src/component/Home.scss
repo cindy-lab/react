@@ -4,9 +4,9 @@ $center: center;
 h1 {
     text-align: $center;
 }
-#starfeed {
-    margin-left: $size;  
-}
+// #starfeed {
+//     margin-left: $size;  
+// }
 #profiles {
     border: 3px solid;
     width: 20%;
@@ -15,13 +15,13 @@ h1 {
     position:fixed;
     background-color:lightskyblue;
 }
-#notification {
-    position: static;
-    float: right;
-    width:25%;
-    border:3px solid;
-    height: 100%;
-}
+// #notification {
+//     position: static;
+//     float: right;
+//     width:25%;
+//     border:3px solid;
+//     height: 100%;
+// }
 img {
     width:60%;
     height: 500px;
