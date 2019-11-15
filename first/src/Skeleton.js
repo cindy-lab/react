@@ -108,6 +108,8 @@ function IconContainer(props) {
 //   }
 // }
 function Media(props) {
+  console.log("");
+  
   const { loading = false } = props;
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
