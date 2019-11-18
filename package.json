@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Jan-kenneth247/react#readme",
   "dependencies": {
+    "@material-ui/core": "^4.6.1",
     "express": "^4.17.1"
   }
 }
