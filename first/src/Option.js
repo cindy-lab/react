@@ -4,8 +4,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
-import DvrIcon from '@material-ui/icons/Dvr';
-import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+// import DvrIcon from '@material-ui/icons/Dvr';
+// import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import BuildIcon from '@material-ui/icons/Build';
 
@@ -16,19 +16,7 @@ export default function Option() {
             <ListItemIcon>
               <HomeIcon/>
             </ListItemIcon>
-            <ListItemText primary='Home'/>
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <DvrIcon/>
-            </ListItemIcon>
-            <ListItemText primary='Starfeed'/>
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <PhotoLibraryIcon/>
-            </ListItemIcon>
-            <ListItemText primary='Gallery'/>
+            <ListItemText primary='StarFeed'/>
           </ListItem>
           <ListItem button>
             <ListItemIcon>
