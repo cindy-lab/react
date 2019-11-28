@@ -8,13 +8,14 @@ import clsx from 'clsx';
 const useStyles = makeStyles(theme => ({
     textField: {
       marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      backgroundColor:"lightgray",      
+      marginRight: theme.spacing(3),
+      backgroundColor:"white",     
       left:600,
+      borderRadius:4
     },
     button: {
       marginLeft: theme.spacing(75),
-      top:10,
+      top:15,
     },
   }),
 );
@@ -25,24 +26,28 @@ export default function Login() {
 
   if(!goStarFeed){
     return (
-    <form className={classes.container} noValidate autoComplete="off">
+    <form className={classes.container}>
       <div>
         <TextField
-        id="outlined-dense"
-        label="Username"
+        id="email/number"
+        label="Email/phoneNumber"
         className={clsx(classes.textField, classes.dense)}
         margin="dense"
-        variant="outlined"/>
+        name="email"
+        autoComplete="email"
+        variant="filled"/>
+        
 
         <TextField
-        id="outlined-dense"
+        id="password"   
         label="Password"
         className={clsx(classes.textField, classes.dense)}
         margin="dense"
-        variant="outlined"
+        variant="filled"
         type = "password"/>
 
-        <Button variant="outlined" color="primary" className={classes.button} onClick={() =>  setStarFeed(true)}>
+        <Button variant="contained" color="white" 
+        className={classes.button} onClick={() =>  setStarFeed(true)}>
         LOGIN
         </Button>
       </div>
@@ -51,7 +56,9 @@ export default function Login() {
   }
   else
   {
-    return(<StarFeed/>);
+    return(<StarFeed />);
   }
 }
+
+
 
