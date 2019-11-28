@@ -9,6 +9,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import {BrowserRouter as Router,Switch,Link,Route} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -139,7 +140,7 @@ export default function Signup() {
         InputLabelProps={{
           shrink: true,
         }}
-      />        
+      />   <Link to="/starfeed">    
            <Button
               type="submit"
               fullWidth
@@ -149,6 +150,7 @@ export default function Signup() {
             >
               Sign Up
             </Button>
+            </Link>
           </form>
         </div>
       </Grid>
