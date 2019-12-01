@@ -15,7 +15,7 @@ import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import starRating from './component/starRating';
 import Tooltip from '@material-ui/core/Tooltip';
-// import uploadPhoto from './uploadPhoto'
+import ImageUpload from './component/ImageUpload';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -117,7 +117,6 @@ function Media(props) {
   return (
     <div>
     <Card className={classes.card}>
-    
       <CardHeader
         avatar={
           loading ? (
@@ -146,7 +145,7 @@ function Media(props) {
       ) : (
         <CardMedia
           className={classes.media}
-          image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT5lgWceoj3kpz9-ZdxtTiQNjxYP05kxMnfmc4jaToGleCTh53P"
+          image="http://localhost:5000/files/stargaze_uploads_1575086114_asd.png"
           title="sample pose"
         />
       )}

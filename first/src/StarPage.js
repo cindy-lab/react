@@ -8,12 +8,12 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import HomeIcon from '@material-ui/icons/Home';
+import StarFeed from './component/StarFeed';
 
 
 const useStyles = makeStyles(theme => ({
@@ -82,7 +82,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Header() {
+export default function StarPage() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -165,8 +165,10 @@ export default function Header() {
   );
 
   return (
+    <div>
+      <StarFeed />  
     <div className={classes.grow}>
-      <AppBar position="relative">
+      <AppBar position="fixed">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
            Stargaze.com
@@ -218,8 +220,7 @@ export default function Header() {
               <MoreIcon />
             </IconButton>
           </div>
-        </Toolbar>
-       
+        </Toolbar>    
         <AppBar position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
          <Typography>Stargaze.com</Typography>
@@ -228,6 +229,7 @@ export default function Header() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+    </div>
     </div>
   );
 }

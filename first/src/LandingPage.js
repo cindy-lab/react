@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-  export default function ButtonAppBar() {
+  export default function LandingPage() {
     const classes = useStyles();
   return (
     <div className={classes.root}>

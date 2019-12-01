@@ -140,7 +140,7 @@ export default function Signup() {
         InputLabelProps={{
           shrink: true,
         }}
-      />   <Link to="/starfeed">    
+      />   <Link to="/starfeed">   
            <Button
               type="submit"
               fullWidth
@@ -150,7 +150,7 @@ export default function Signup() {
             >
               Sign Up
             </Button>
-            </Link>
+            </Link>  
           </form>
         </div>
       </Grid>
