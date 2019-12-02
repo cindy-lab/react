@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../Header';
-import Option from '../Option';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,6 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Skeleton from '../Skeleton';
+import uploadPhoto from './uploadPhoto';
 
 
 
@@ -64,10 +64,10 @@ export default function ClippedDrawer() {
         }}
       >
         <div className={classes.toolbar} />
-        <Option/>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        {/* <uploadPhoto/> */}
         <Skeleton/>
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt

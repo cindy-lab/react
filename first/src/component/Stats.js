@@ -42,30 +42,30 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
-export default function ClippedDrawer() {
-  const classes = useStyles();
+// export default function ClippedDrawer() {
+//   const classes = useStyles();
 
-  return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            Stargaze
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Header position="fixed" className={classes.appBar}/>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.toolbar} />
-        <Option/>
-        </Drawer>
-        </div>
-  )
-    }
+  // return (
+  //   <div className={classes.root}>
+  //     <CssBaseline />
+  //     <AppBar position="fixed" className={classes.appBar}>
+  //       <Toolbar>
+  //         <Typography variant="h6" noWrap>
+  //           Stargaze
+  //         </Typography>
+  //       </Toolbar>
+  //     </AppBar>
+  //     <Header position="fixed" className={classes.appBar}/>
+  //     <Drawer
+  //       className={classes.drawer}
+  //       variant="permanent"
+  //       classes={{
+  //         paper: classes.drawerPaper,
+  //       }}
+  //     >
+  //       <div className={classes.toolbar} />
+  //       <Option/>
+  //       </Drawer>
+  //       </div>
+  // )
+  //   }
