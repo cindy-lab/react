@@ -284,10 +284,15 @@ class SignUp extends React.Component{
         InputLabelProps={{
           shrink: true,
         }}
+<<<<<<< HEAD
         
       />   <Link to="/starfeed">    
            <Button onClick = {this.onSubmit}
               className = "button"
+=======
+      />   <Link to="/starfeed">   
+           <Button
+>>>>>>> 772eebfa9c9f49eff49db08574060c35269abe3c
               type="submit"
               fullWidth
               variant="contained"
@@ -296,7 +301,7 @@ class SignUp extends React.Component{
             >
               Sign Up
             </Button>
-            </Link>
+            </Link>  
           </form>
           {/* {error && <Error message={ERROR_IN_REGISTRATION} />}
           {register && <Message message={REGISTRATION_MESSAGE} />} */}

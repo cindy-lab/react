@@ -1,4 +1,5 @@
 import React, {useState, Component} from 'react';
+<<<<<<< HEAD
 import './component/StarFeed.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import Header1 from './component/Header1';
@@ -6,42 +7,25 @@ import Starfeed from './component/StarFeed'
 import Signin from './Signup';
 // import uploadPhoto from './component/uploadPhoto';
 
+=======
+import LandingPage from './LandingPage';
+import StarPage from './StarPage';
+>>>>>>> 772eebfa9c9f49eff49db08574060c35269abe3c
 import {BrowserRouter as Router,Switch,Link,Route} from 'react-router-dom';
 
-// const useStyles = makeStyles(theme => ({
-//   container: {
-//     display: 'flex',
-//     flexWrap: 'wrap',
-//     flexGrow: 1,
-//     padding: theme.spacing(3),
-//     marginTop:65,
-//   },
-// }));
 
 export default class App extends Component {
-
-  // const [goStarFeed, setStarFeed] = useState(0);
-  // const handleChange = name => event => {
-  //   setValues({ ...values, [name]: event.target.value });
-  // };
-  // if(!goStarFeed){
    render(){
     return (
-      //  <div id="background"></div>
-          // <form className={classes.container} noValidate autoComplete="off">
-          // <Header1 position="fixed"/>    
-          <Router>
-            <div>
-            <Switch>
-              <Route exact path = "/" component={Header1}/>
-              <Route path = "/starfeed" component={Starfeed}/>
-
-            </Switch>
-            </div>
-          </Router>
-          
-          // </form>
-        )
+      <Router>
+        <div>
+        <Switch>
+          <Route exact path = "/" component={LandingPage}/>
+          <Route path = "/starfeed" component={StarPage}/>
+        </Switch>
+        </div>
+      </Router>
+    )
    }
   }
   

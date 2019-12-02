@@ -1,17 +1,34 @@
 import React from 'react';
+import PostAddIcon from '@material-ui/icons/PostAdd';
+import Typography from '@material-ui/core/Typography';
+import axios from 'axios'
 
 export default class ImageUpload extends React.Component {
     constructor(props) {
       super(props);
       this.state = {file: '',imagePreviewUrl: ''};
-    }
-  
+    }  
     _handleSubmit(e) {
+      // e.preventDefault();
+      // // TODO: do something with -> this.state.file
+      // console.log('handle uploading-', this.state.file);
       e.preventDefault();
+      var data = new FormData();
+      data.append('img', this.state.file);
+  
+      axios.post(`http://localhost:5000/upload`,
+          data
+        ).then(res => {
+          console.log(res);
+        })
+        .catch(error => {
+          console.error("file upload failed", error);
+        });
+  
       // TODO: do something with -> this.state.file
       console.log('handle uploading-', this.state.file);
+    
     }
-  
     _handleImageChange(e) {
       e.preventDefault();
   
@@ -26,29 +43,21 @@ export default class ImageUpload extends React.Component {
       }
   
       reader.readAsDataURL(file)
-    }
-  
+    }  
     render() {
-      let {imagePreviewUrl} = this.state;
-      let $imagePreview = null;
-      if (imagePreviewUrl) {
-        $imagePreview = (<img src={imagePreviewUrl} />);
-      } else {
-        $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-      }
-  
       return (
-        <div className="previewComponent">
-          <form onSubmit={(e)=>this._handleSubmit(e)}>
-            <input className="fileInput" 
+        <div>
+          <PostAddIcon />
+          
+          <Typography variant="h4">What's new with Star?</Typography>
+          {/* <PhotoCameraIcon /> */}
+          <div>
+            <input className="PhotoInput" 
               type="file" 
+              name="img"
               onChange={(e)=>this._handleImageChange(e)} />
             <button className="submitButton" 
-              type="submit" 
               onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
-          </form>
-          <div className="imgPreview">
-            {$imagePreview}
           </div>
         </div>
       )
