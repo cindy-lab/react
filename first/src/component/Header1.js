@@ -120,8 +120,8 @@ const styles = theme => ({
         <form >
       <div>
         <TextField
-        id="email/number"
-        label="Email/Number"
+        id="email"
+        label="Email"
         style = {textField}
         // className={clsx(classes.textField, classes.dense)}
         margin="dense"

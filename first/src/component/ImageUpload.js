@@ -16,7 +16,7 @@ export default class ImageUpload extends React.Component {
       var data = new FormData();
       data.append('img', this.state.file);
   
-      axios.post(`http://localhost:5000/upload`,
+      axios.post(`http://localhost:4000/upload`,
           data
         ).then(res => {
           console.log(res);

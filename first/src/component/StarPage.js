@@ -13,7 +13,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import HomeIcon from '@material-ui/icons/Home';
-import StarFeed from './component/StarFeed';
+import StarFeed from './StarFeed';
 
 
 const useStyles = makeStyles(theme => ({

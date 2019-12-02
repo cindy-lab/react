@@ -1,17 +1,15 @@
 import React, {useState, Component} from 'react';
-<<<<<<< HEAD
 import './component/StarFeed.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import Header1 from './component/Header1';
 import Starfeed from './component/StarFeed'
 import Signin from './Signup';
+import imageUpload from './component/ImageUpload';
+import StarPage from './component/StarPage'
 // import uploadPhoto from './component/uploadPhoto';
 
-=======
-import LandingPage from './LandingPage';
-import StarPage from './StarPage';
->>>>>>> 772eebfa9c9f49eff49db08574060c35269abe3c
 import {BrowserRouter as Router,Switch,Link,Route} from 'react-router-dom';
+import StarFeed from './component/StarFeed';
 
 
 export default class App extends Component {
@@ -20,8 +18,9 @@ export default class App extends Component {
       <Router>
         <div>
         <Switch>
-          <Route exact path = "/" component={LandingPage}/>
-          <Route path = "/starfeed" component={StarPage}/>
+          <Route exact path = "/" component={Header1}/>
+          <Route path = "/starfeed" component={Starfeed}/>
+          <Route path = "/imageupload" component={imageUpload}/>
         </Switch>
         </div>
       </Router>

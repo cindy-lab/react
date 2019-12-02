@@ -10,7 +10,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import {BrowserRouter as Router,Switch,Link,Route} from 'react-router-dom';
+import {BrowserRouter as Router,Switch,Link,Route,Redirect} from 'react-router-dom';
 import {userRegistration, userValidation} from './component/Router';
 import { REGISTRATION_MESSAGE, ERROR_IN_REGISTRATION } from './message';
 import { log } from 'util';
@@ -37,7 +37,8 @@ class SignUp extends React.Component{
         month : "",
         day : "",
         year : ""
-      }
+      }, 
+      toDashboard : false
     }
   }
   onChange = e => {
@@ -89,6 +90,7 @@ class SignUp extends React.Component{
           day : "",
           year : ""
         },
+        toDashboard : true
         
         // register : true,
         // error: false
@@ -107,6 +109,9 @@ class SignUp extends React.Component{
 
   
  render(){
+  if(this.state.toDashboard === true){
+    return <Redirect to="/starfeed" />;
+  }
   const root = {
     height: '100vh',
     
@@ -157,6 +162,7 @@ class SignUp extends React.Component{
 
  
   return (
+   
     <Grid container component="main" style={root} >
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} style={image} />
@@ -284,15 +290,11 @@ class SignUp extends React.Component{
         InputLabelProps={{
           shrink: true,
         }}
-<<<<<<< HEAD
         
-      />   <Link to="/starfeed">    
+      />  
+       {/* <Link to="/imageupload">     */}
            <Button onClick = {this.onSubmit}
               className = "button"
-=======
-      />   <Link to="/starfeed">   
-           <Button
->>>>>>> 772eebfa9c9f49eff49db08574060c35269abe3c
               type="submit"
               fullWidth
               variant="contained"
@@ -301,7 +303,7 @@ class SignUp extends React.Component{
             >
               Sign Up
             </Button>
-            </Link>  
+            {/* </Link>   */}
           </form>
           {/* {error && <Error message={ERROR_IN_REGISTRATION} />}
           {register && <Message message={REGISTRATION_MESSAGE} />} */}

@@ -2,13 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Skeleton from '../Skeleton';
-<<<<<<< HEAD
+import Header from './StarPage';
 // import imageUpload from './component/uploadPhoto';
-=======
-import Card from "./Card";
-import axios from 'axios';
-import ImageUpload from './ImageUpload';
->>>>>>> 772eebfa9c9f49eff49db08574060c35269abe3c
 
 const drawerWidth = "100%";
 const useStyles = makeStyles(theme => ({
@@ -74,11 +69,11 @@ export default function StarFeed() {
 
   const classes = useStyles();
   return (
-    <div>
+  
+    // <div>
     <div className={classes.root}>
       <Drawer
         className={classes.drawer}
-<<<<<<< HEAD
         variant="permanent"
         classes={{
           paper: classes.drawerPaper,
@@ -89,8 +84,9 @@ export default function StarFeed() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Skeleton/>
+        <Header/>
         {/* <imageUpload /> */}
-        <Typography paragraph>
+        {/* <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
           facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
@@ -112,7 +108,7 @@ export default function StarFeed() {
           tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
           nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        </Typography> */}
       </main>
       <Drawer
         className={classes.drawer1}
@@ -124,34 +120,5 @@ export default function StarFeed() {
       >
       </Drawer>
     </div>
-=======
-        variant="permanent" >
-      </Drawer> 
-   
-   
-      <main >
-        <div className={classes.uploadimage}>
-        {/* <ImageUpload /></div>
-        {/* <Skeleton/> */}
-        { axios.get('http://localhost:5000/getImages') */}
-  //    .then(res => {
-  //  return   <ul>
-  //    { res.data.map((post)=>{
-  //       return (
-  //        <li> <Card key={post.id} {...post} /> </li>
-  //       );
-  //     })}
-  //     </ul>
-  //   }).catch(err=>{
-  //   return  <div>Failed to load feeds</div>
-  //   })}
-    //        <span>
-   
-    // </span>
- 
-      // </main> 
-      </div>
-      </div>
->>>>>>> 772eebfa9c9f49eff49db08574060c35269abe3c
   );
 }
