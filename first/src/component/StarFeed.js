@@ -4,6 +4,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Skeleton from '../Skeleton';
 import Header from './StarPage';
 // import imageUpload from './component/uploadPhoto';
+// import uploadPhoto from './component/ImageUpload';
 
 const drawerWidth = "100%";
 const useStyles = makeStyles(theme => ({
@@ -81,10 +82,11 @@ export default function StarFeed() {
       >
         <div className={classes.toolbar} />
       </Drawer>
+      {/* <uploadPhoto/> */}
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Skeleton/>
-        <Header/>
+        {/* <Header/> */}
         {/* <imageUpload /> */}
         {/* <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt

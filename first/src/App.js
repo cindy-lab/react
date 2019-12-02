@@ -19,7 +19,7 @@ export default class App extends Component {
         <div>
         <Switch>
           <Route exact path = "/" component={Header1}/>
-          <Route path = "/starfeed" component={Starfeed}/>
+          <Route path = "/starfeed" component={StarPage}/>
           <Route path = "/imageupload" component={imageUpload}/>
         </Switch>
         </div>

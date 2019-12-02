@@ -14,6 +14,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import HomeIcon from '@material-ui/icons/Home';
 import StarFeed from './StarFeed';
+// import uploadPhoto from './ImageUpload';
 
 
 const useStyles = makeStyles(theme => ({
@@ -166,6 +167,7 @@ export default function StarPage() {
 
   return (
     <div>
+      <uploadPhoto />
       <StarFeed />  
     <div className={classes.grow}>
       <AppBar position="fixed">
