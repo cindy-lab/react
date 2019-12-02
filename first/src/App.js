@@ -1,9 +1,10 @@
 import React, {useState, Component} from 'react';
 import './component/StarFeed.scss';
 import { makeStyles } from '@material-ui/core/styles';
-import Header1 from './Header1';
+import Header1 from './component/Header1';
 import Starfeed from './component/StarFeed'
 import Signin from './Signup';
+// import uploadPhoto from './component/uploadPhoto';
 
 import {BrowserRouter as Router,Switch,Link,Route} from 'react-router-dom';
 

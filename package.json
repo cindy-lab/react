@@ -21,6 +21,8 @@
   "homepage": "https://github.com/Jan-kenneth247/react#readme",
   "dependencies": {
     "@material-ui/core": "^4.6.1",
+    "axios": "^0.19.0",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1"
   }
 }

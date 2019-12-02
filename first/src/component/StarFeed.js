@@ -8,6 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Skeleton from '../Skeleton';
+// import imageUpload from './component/uploadPhoto';
 
 
 
@@ -36,6 +37,14 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: theme.mixins.toolbar,
 }));
+// class StarFeed extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {
+//       image : Object,
+//       imageDescription : String,
+//     }
+//   }
 
 export default function ClippedDrawer() {
   const classes = useStyles();
@@ -56,6 +65,7 @@ export default function ClippedDrawer() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Skeleton/>
+        {/* <imageUpload /> */}
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
