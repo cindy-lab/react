@@ -284,15 +284,8 @@ class SignUp extends React.Component{
         InputLabelProps={{
           shrink: true,
         }}
-<<<<<<< HEAD
-        
-      />   <Link to="/starfeed">    
-           <Button onClick = {this.onSubmit}
-              className = "button"
-=======
       />   <Link to="/starfeed">   
            <Button
->>>>>>> 772eebfa9c9f49eff49db08574060c35269abe3c
               type="submit"
               fullWidth
               variant="contained"

@@ -1,32 +1,27 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Skeleton from '../Skeleton';
-<<<<<<< HEAD
-// import imageUpload from './component/uploadPhoto';
-=======
-import Card from "./Card";
-import axios from 'axios';
-import ImageUpload from './ImageUpload';
->>>>>>> 772eebfa9c9f49eff49db08574060c35269abe3c
+// import React from 'react';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Drawer from '@material-ui/core/Drawer';
+// import Skeleton from '../Skeleton';
 
-const drawerWidth = "100%";
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
-  drawer: {
-    width: drawerWidth,
-    width: 300,
-    flexShrink: 0,
+// import imageUpload from './component/uploadPhoto';
+
+// const drawerWidth = "100%";
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     display: 'flex',
+//   },
+//   drawer: {
+//     width: drawerWidth,
+//     width: 300,
+//     flexShrink: 0,
     
-  },
-  uploadimage:{
-    paddingTop:'12%',
+//   },
+//   uploadimage:{
+//     paddingTop:'12%',
     
-  },
-  toolbar: theme.mixins.toolbar,
-}));
+//   },
+//   toolbar: theme.mixins.toolbar,
+// }));
 // class StarFeed extends React.Component{
 //   constructor(props){
 //     super(props);
@@ -64,7 +59,7 @@ const useStyles = makeStyles(theme => ({
 //     </div>
 //   );
 // }
-export default function StarFeed() {
+// export default function StarFeed() {
 
 
 //  const myComponent = actions.map((action, i) => {
@@ -72,86 +67,59 @@ export default function StarFeed() {
 // })
 
 
-  const classes = useStyles();
-  return (
-    <div>
-    <div className={classes.root}>
-      <Drawer
-        className={classes.drawer}
-<<<<<<< HEAD
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.toolbar} />
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Skeleton/>
-        {/* <imageUpload /> */}
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-          facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-          gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-          donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-          imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-          arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-          donec massa sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-          facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-          tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-          consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-          vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
-          hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
-          tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
-          nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-          accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
-      </main>
-      <Drawer
-        className={classes.drawer1}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper1,
-        }}
-        anchor="right"
-      >
-      </Drawer>
-    </div>
-=======
-        variant="permanent" >
-      </Drawer> 
-   
-   
-      <main >
-        <div className={classes.uploadimage}>
-        {/* <ImageUpload /></div>
-        {/* <Skeleton/> */}
-        { axios.get('http://localhost:5000/getImages') */}
-  //    .then(res => {
-  //  return   <ul>
-  //    { res.data.map((post)=>{
-  //       return (
-  //        <li> <Card key={post.id} {...post} /> </li>
-  //       );
-  //     })}
-  //     </ul>
-  //   }).catch(err=>{
-  //   return  <div>Failed to load feeds</div>
-  //   })}
-    //        <span>
-   
-    // </span>
- 
-      // </main> 
-      </div>
-      </div>
->>>>>>> 772eebfa9c9f49eff49db08574060c35269abe3c
-  );
-}
+//   const classes = useStyles();
+//   return (
+//     <div>
+//     <div className={classes.root}>
+//       <Drawer
+//         className={classes.drawer}
+//         variant="permanent"
+//         classes={{
+//           paper: classes.drawerPaper,
+//         }}
+//       >
+//         <div className={classes.toolbar} />
+//       </Drawer>
+//       <main className={classes.content}>
+//         <div className={classes.toolbar} />
+//         <Skeleton/>
+//         {/* <imageUpload /> */}
+//         <Typography paragraph>
+//           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+//           ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
+//           facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
+//           gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
+//           donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
+//           adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
+//           Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
+//           imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
+//           arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
+//           donec massa sapien faucibus et molestie ac.
+//         </Typography>
+//         <Typography paragraph>
+//           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
+//           facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
+//           tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
+//           consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
+//           vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
+//           hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
+//           tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
+//           nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
+//           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
+//         </Typography>
+//       </main>
+//       <Drawer
+//         className={classes.drawer1}
+//         variant="permanent"
+//         classes={{
+//           paper: classes.drawerPaper1,
+//         }}
+//         anchor="right"
+//       >
+//       </Drawer>
+//     </div>
+//   </div>
+  
+//   )
+// }
+
