@@ -1,8 +1,4 @@
 import React, {useState, Component} from 'react';
-<<<<<<< HEAD
-import LandingPage from './LandingPage';
-import StarPage from './StarPage';
-=======
 import './component/StarFeed.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import Header1 from './component/Header1';
@@ -12,7 +8,6 @@ import imageUpload from './component/ImageUpload';
 import StarPage from './component/StarPage'
 // import uploadPhoto from './component/uploadPhoto';
 
->>>>>>> 5164df44ca3755bd8ddec51c9c8944d6bf3fac2c
 import {BrowserRouter as Router,Switch,Link,Route} from 'react-router-dom';
 import StarFeed from './component/StarFeed';
 
