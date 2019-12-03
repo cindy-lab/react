@@ -110,7 +110,7 @@ class SignUp extends React.Component{
   
  render(){
   if(this.state.toDashboard === true){
-    return <Redirect to="/imageupload" />;
+    return <Redirect to="/starfeed" />;
   }
   const root = {
     height: '100vh',

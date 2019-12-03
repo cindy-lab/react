@@ -67,10 +67,11 @@
 // })
 
 import React from 'react';
-import Header from '../Header';
+// import Header from '../Header';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Skeleton from '../Skeleton';
+// import Uploadimage from './component/mageUpload'
 
 const drawerWidth = 300;
 const useStyles = makeStyles(theme => ({
@@ -95,9 +96,10 @@ export default function ClippedDrawer() {
       </Drawer>
       <main >
         <div className={classes.toolbar} />
+        {/* <Uploadimage /> */}
         <Skeleton/>
       </main>
-      <Header />
+      {/* <Header /> */}
     </div> 
   );
 }
