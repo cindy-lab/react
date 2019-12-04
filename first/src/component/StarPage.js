@@ -15,7 +15,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import HomeIcon from '@material-ui/icons/Home';
 import StarFeed from './StarFeed';
 import {BrowserRouter as Router,Switch,Link,Route} from 'react-router-dom';
-// import uploadPhoto from './ImageUpload';
+import uploadPhoto from './ImageUpload';
 
 
 const useStyles = makeStyles(theme => ({

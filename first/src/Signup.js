@@ -16,6 +16,7 @@ import { REGISTRATION_MESSAGE, ERROR_IN_REGISTRATION } from './message';
 import { log } from 'util';
 import Message from './elements/Messages';
 import Error from './elements/Error';
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 
 
@@ -112,52 +113,7 @@ class SignUp extends React.Component{
   if(this.state.toDashboard === true){
     return <Redirect to="/starfeed" />;
   }
-  const root = {
-    height: '100vh',
-    
-  }
-  const image = {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundRepeat: 'no-repeat',
-    // backgroundColor:
-    //   theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    // height: '80%',
-  }
-  const paper = {
-    // margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    // paddingTop : 2,
-    // height: 'calc(10%)',
   
-  }
-  const avatar = {
-    // margin: theme.spacing(1),
-    // backgroundColor: theme.palette.secondary.main,
-    // color = 'red',
-    margin:'15%',
-    backgroundColor: "Blue"
-    
-  }
-  const form = {
-    width: '80%', // Fix IE 11 issue.
-
-
-  }
-  const title = {
-    // paddingTop : 50,
-    color : "blue"
-  }
-  const footer = {
-    marginBottom: '18%',
-  }
-  const submit =  {
-    // margin: theme.spacing(3, 0, 2),
-
-  }
   // const height = 55
 
  
@@ -175,135 +131,152 @@ class SignUp extends React.Component{
             Create an Account
           </Typography>
           <form style={form} noValidate onSubmit = {this.onSubmit} >
-          <TextField 
-          // className={clsx(classes.textField, classes.dense)}
-          // style={{ height }}
-        id="outlined-dense"
-        label="Firstname"
-        value={this.state.Fname}
-        onChange = {e => this.setState({Fname : e.target.value})}
-        margin="normal"
-        variant="outlined"
-        required
-        fullWidth
-        autoFocus/>
-          <TextField
-          // className={clsx(classes.textField, classes.dense)}
-          // style={{ height }}
-        id="outlined-dense"
-        label="Middlename"
-        value = {this.state.Mname}
-        onChange = {e => this.setState({Mname : e.target.value})}
-        margin="normal"
-        variant="outlined"
-        required
-        fullWidth
-        autoFocus/>
-            <TextField
-          // className={clsx(classes.textField, classes.dense)}
-          // style={{ height }}
-        id="outlined-dense"
-        label="Lastname"
-        value={this.state.Lname}
-        onChange = {e => this.setState({Lname : e.target.value})}
-        margin="normal"
-        variant="outlined"
-        required
-        fullWidth
-        autoFocus/>
-          <TextField
-          // className={clsx(classes.textField, classes.dense)}
-          // style={{ height }}
-        id="outlined-dense"
-        label="Phone Number"
-        value={this.state.pNumber}
-        onChange = {e => this.setState({pNumber : e.target.value})}
-        margin="normal"
-        variant="outlined"
-        type="number"
-        required
-        fullWidth
-        autoFocus/>
-          <TextField
-          // className={clsx(classes.textField, classes.dense)}
-          // style={{ height }}
-        autoComplete="email"
-        id="outlined-dense"
-        label="Email Address"
-        value={this.state.Email}
-        onChange = {e => this.setState({Email : e.target.value})}
-        margin="normal"
-        variant="outlined"
-        type="email"
-        required
-        fullWidth
-        autoFocus/>
-        {/* <p>{user_name_taken}</p>
-                <Form.Input
-                  icon='mail'
-                  iconPosition='left'
-                  label='Email'
-                  type='email'
-                  value={this.state.email}
-                  onChange={e => this.setState({ email: e.target.value })}
-                  required
-
-                /> */}
-            <TextField
-          // className={clsx(classes.textField, classes.dense)}
-          // style={{ height }}
-        autoComplete="password"
-        id="outlined-dense"
-        label="Password"
-        value={this.state.password}
-        onChange = {e => this.setState({password : e.target.value})}
-        margin="normal"
-        variant="outlined"
-        type="password"
-        required
-        fullWidth
-        autoFocus/>
-        <TextField
-          // className={clsx(classes.textField, classes.dense)}
-          // style={{ height }}
-        autoComplete="password"
-        id="outlined-dense"
-        label="Re-type Password"
-        value={this.state.verifyPassword}
-        onChange = {e => this.setState({verifyPassword : e.target.value})}
-        margin="normal"
-        variant="outlined"
-        type="password"
-        required
-        fullWidth
-        autoFocus/>
-          <TextField
-          variant="outlined"
-          margin="normal"
-          // required
-          fullWidth
-        id="date"
-        label="Birthday"
-        type="date"
-        defaultValue="mm:dd:yy"
-        // style={textField}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        
-      />  
-       {/* <Link to="/imageupload">     */}
-           <Button onClick = {this.onSubmit}
-              className = "button"
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              style={footer}
+          <ValidatorForm
+                ref="form"
+                onSubmit={this.onSubmit}
+                onError={errors => console.log(errors)}
             >
-              Sign Up
-            </Button>
-            {/* </Link>   */}
+            </ValidatorForm>
+            <TextField 
+                      // className={clsx(classes.textField, classes.dense)}
+                      // style={{ height }}
+                    id="outlined-dense"
+                    label="Firstname"
+                    value={this.state.Fname}
+                    onChange = {e => this.setState({Fname : e.target.value})}
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    autoFocus/>
+            <TextField
+                      // className={clsx(classes.textField, classes.dense)}
+                      // style={{ height }}
+                    id="outlined-dense"
+                    label="Middlename"
+                    value = {this.state.Mname}
+                    onChange = {e => this.setState({Mname : e.target.value})}
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    autoFocus/>
+              <TextField
+            // className={clsx(classes.textField, classes.dense)}
+            // style={{ height }}
+          id="outlined-dense"
+          label="Lastname"
+          value={this.state.Lname}
+          onChange = {e => this.setState({Lname : e.target.value})}
+          margin="normal"
+          variant="outlined"
+          required
+          fullWidth
+          autoFocus/>
+            <TextField
+            // className={clsx(classes.textField, classes.dense)}
+            // style={{ height }}
+          id="outlined-dense"
+          label="Phone Number"
+          value={this.state.pNumber}
+          onChange = {e => this.setState({pNumber : e.target.value})}
+          margin="normal"
+          variant="outlined"
+          type="number"
+          required
+          fullWidth
+          autoFocus/>
+            <TextField
+            // className={clsx(classes.textField, classes.dense)}
+            // style={{ height }}
+          autoComplete="email"
+          errorText={"invalid email"}
+          // error={errors.email && touched.email}
+          id="outlined-dense"
+          label="Email Address"
+          value={this.state.Email}
+          onChange = {e => this.setState({Email : e.target.value})}
+          margin="normal"
+          variant="outlined"
+          type="email"
+          required
+          validators={['required', 'isEmail']}
+          errorMessages={['this field is required', 'email is not valid']}
+          fullWidth
+          
+          autoFocus/>
+          
+          {/* <p>{user_name_taken}</p>
+                  <Form.Input
+                    icon='mail'
+                    iconPosition='left'
+                    label='Email'
+                    type='email'
+                    value={this.state.email}
+                    onChange={e => this.setState({ email: e.target.value })}
+                    required
+
+                  /> */}
+              <TextField
+            // className={clsx(classes.textField, classes.dense)}
+            // style={{ height }}
+          autoComplete="password"
+          id="outlined-dense"
+          label="Password"
+          value={this.state.password}
+          onChange = {e => this.setState({password : e.target.value})}
+          margin="normal"
+          variant="outlined"
+          type="password"
+          required
+          fullWidth
+          autoFocus/>
+          <TextField
+                  // className={clsx(classes.textField, classes.dense)}
+                  // style={{ height }}
+                error={this.state.password != this.state.verifyPassword}
+                autoComplete="password"
+                id="outlined-dense"
+                label="Re-type Password"
+                value={this.state.verifyPassword}
+                onChange = {e => this.setState({verifyPassword : e.target.value})}
+                margin="normal"
+                variant="outlined"
+                type="password"
+                required
+                errorText={"Password doesn`t match"}
+                fullWidth
+                
+                autoFocus/>
+            <TextField
+            variant="outlined"
+            margin="normal"
+            // required
+            fullWidth
+          id="date"
+          label="Birthday"
+          type="date"
+          defaultValue="mm:dd:yy"
+          // style={textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          
+        />  
+        {/* <Link to="/imageupload">     */}
+            <Button onClick = {this.onSubmit}
+                className = "button"
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                // disabled={this.state.Fname.length<=0 || this.state.Lname <= 0 || this.state.Mname <=0 || this.state.Email <=5 || this.state.pNumber<=0}
+                disabled ={this.state.password != this.state.verifyPassword}
+                style={footer}
+              >
+                Sign Up
+              </Button>
+              {/* </Link>   */}
           </form>
           {/* {error && <Error message={ERROR_IN_REGISTRATION} />}
           {register && <Message message={REGISTRATION_MESSAGE} />} */}
@@ -312,6 +285,53 @@ class SignUp extends React.Component{
     </Grid>
   );
 }
+}
+
+const root = {
+  height: '100vh',
+  
+}
+const image = {
+  backgroundImage: 'url(https://source.unsplash.com/random)',
+  backgroundRepeat: 'no-repeat',
+  // backgroundColor:
+  //   theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  // height: '80%',
+}
+const paper = {
+  // margin: theme.spacing(8, 4),
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  // paddingTop : 2,
+  // height: 'calc(10%)',
+
+}
+const avatar = {
+  // margin: theme.spacing(1),
+  // backgroundColor: theme.palette.secondary.main,
+  // color = 'red',
+  margin:'15%',
+  backgroundColor: "Blue"
+  
+}
+const form = {
+  width: '80%', // Fix IE 11 issue.
+
+
+}
+const title = {
+  // paddingTop : 50,
+  color : "blue"
+}
+const footer = {
+  marginBottom: '18%',
+}
+const submit =  {
+  // margin: theme.spacing(3, 0, 2),
+
 }
 
 export default SignUp;
