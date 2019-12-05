@@ -1,13 +1,14 @@
 import React from 'react';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import Typography from '@material-ui/core/Typography';
-import axios from 'axios'
+import axios from 'axios';import { Form, Input, Card, Button, Icon } from 'semantic-ui-react';
 
 export default class ImageUpload extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {file: '',imagePreviewUrl: ''};
+      this.state = {file: "",imageDescription: ""};
     }  
+    
     _handleSubmit(e) {
       // e.preventDefault();
       // // TODO: do something with -> this.state.file
@@ -29,6 +30,7 @@ export default class ImageUpload extends React.Component {
       console.log('handle uploading-', this.state.file);
     
     }
+  
     _handleImageChange(e) {
       e.preventDefault();
   
@@ -44,13 +46,22 @@ export default class ImageUpload extends React.Component {
   
       reader.readAsDataURL(file)
     }  
+    onChange = (e) => {
+      this.setState({imageDescription : e.target.value});
+    }
     render() {
       return (
-        <div>
-          <PostAddIcon />
-          
-          <Typography variant="h4">What's new with Star?</Typography>
-          {/* <PhotoCameraIcon /> */}
+       <div>
+          <Form.TextArea placeholder='What is new with Star?'
+                                onChange={e => this.setState({ imageDescription: e.target.value })}
+                                style={{
+                                    width: 500,
+                                    height: 60,
+                                    fontSize: 20,
+                                    marginTop: 35
+                                }}
+                                // required
+                            />
           <div>
             <input className="PhotoInput" 
               type="file" 
@@ -60,7 +71,7 @@ export default class ImageUpload extends React.Component {
               onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
           </div>
         </div>
-      )
+      );
     }
   }
     

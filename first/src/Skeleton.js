@@ -145,7 +145,7 @@ function Media(props) {
       ) : (
         <CardMedia
           className={classes.media}
-          image="http://localhost:5000/files/stargaze_uploads_1575086114_asd.png"
+          image="http://localhost:400/uploads/uploadmulter"
           title="sample pose"
         />
       )}

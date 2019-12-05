@@ -256,6 +256,9 @@ export default function StarPage() {
 
   return (
     <div>
+       <div className="bg">
+       <img src= "https://profiles.utdallas.edu/img/default.png"  className="img"></img>
+    </div>
       {/* <uploadPhoto /> */}
       <StarFeed />  
     <div className={classes.grow}>

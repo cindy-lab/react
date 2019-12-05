@@ -171,8 +171,10 @@ export default function StarPage() {
   );
 
   return (
+   
     <div>
       {/* <uploadPhoto /> */}
+
       <StarFeed />  
     <div className={classes.grow}>
       <AppBar position="fixed">
