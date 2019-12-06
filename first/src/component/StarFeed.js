@@ -14,11 +14,11 @@
 //     width: drawerWidth,
 //     width: 300,
 //     flexShrink: 0,
-    
+
 //   },
 //   uploadimage:{
 //     paddingTop:'12%',
-    
+
 //   },
 //   toolbar: theme.mixins.toolbar,
 // }));
@@ -72,6 +72,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Skeleton from '../Skeleton';
 import Uploadimage from './ImageUpload'
+import Store from "./store";
+
 
 const drawerWidth = 300;
 const useStyles = makeStyles(theme => ({
@@ -85,26 +87,44 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: theme.mixins.toolbar,
 }));
+var posts = []
+var Feeds = () => {
+  Store.populate().then(data => {
+    Store.feeds = data
+    localStorage.setItem("posts", JSON.stringify(data))
+  })
+  console.log(Store.feeds);
+
+}
 
 export default function ClippedDrawer() {
+  Feeds();
+  Store.feeds = JSON.parse(localStorage.getItem("posts"))
+  console.log(Store.feeds);
+
   const classes = useStyles();
-  return ( 
+  return (
     <div className={classes.root}>
-      <Drawer     
+      <Drawer
         className={classes.drawer}
         variant="permanent" >
       </Drawer>
       <main >
         <div className={classes.toolbar} />
         <Uploadimage />
-        <Skeleton/>
+        {Store.feeds.map(detail => {
+          return <Skeleton key={detail._id} detail={detail} />
+        })}
+
+
+
       </main>
       {/* <Header /> */}
-    </div> 
+    </div>
   );
 }
-//   const classes = useStyles();
-//   return (
+    //   const classes = useStyles();
+    //   return (
 //     <div>
 //     <div className={classes.root}>
 //       <Drawer
@@ -155,7 +175,7 @@ export default function ClippedDrawer() {
 //       </Drawer>
 //     </div>
 //   </div>
-  
+
 //   )
 // }
 

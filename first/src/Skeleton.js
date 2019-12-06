@@ -26,124 +26,126 @@ const useStyles = makeStyles(theme => ({
     height: 490,
   },
   star: {
-    margin:1,
+    margin: 1,
   }
 }));
 
 const labels = {
-  
+
   1: 'Nice',
- 
+
   2: 'Good',
 
   3: 'Better',
 
   4: 'Best',
-  
+
   5: 'Excellent',
 };
+
 function IconContainer(props) {
   const { value, ...other } = props;
 
   return (
-    
+
     <Tooltip title={labels[value] || ''}>
       <span {...other} />
     </Tooltip>
   );
 }
 
-function Media(props) {
-  console.log("");
-  
+// function Media(props) {
+//   console.log("");
+
+//   const { loading = false } = props;
+//   const classes = useStyles();
+//   const [value, setValue] = React.useState(0);
+
+//   return (
+//     <div>
+//       <Card className={classes.card}>
+//         <CardHeader
+//           avatar={
+//             loading ? (
+//               <Skeleton variant="circle" width={40} height={40} />
+//             ) : (
+//                 <Avatar
+//                   alt="sample stargaze"
+//                   src="https://img.freepik.com/free-vector/start_53876-25533.jpg?size=338&ext=jpg"
+//                 />
+//               )
+//           }
+//           action={
+//             loading ? null : (
+//               <IconButton aria-label="settings">
+//                 <MoreVertIcon />
+
+//               </IconButton>
+
+//             )
+//           }
+//           title={loading ? <Skeleton height={6} width="80%" /> : this.state.imageDescription}
+//           subheader={loading ? <Skeleton height={6} width="40%" /> : '5 hours ago'}
+//         />
+//         {loading ? (
+//           <Skeleton variant="rect" className={classes.media} />
+//         ) : (
+//             <CardMedia
+//               className={classes.media}
+//               image="http://localhost:400/uploads/uploadmulter"
+//               title={this.state.ima}
+//             />
+//           )}
+//         <CardContent>
+//           {loading ? (
+//             <React.Fragment>
+//               <Skeleton height={6} />
+//               <Skeleton height={6} width="80%" />
+//             </React.Fragment>
+//           ) : (
+//               <Typography variant="body2" color="textSecondary" component="p">
+//                 {/* {
+//                   "This is why we live for life: Discovering our new you is the best achievement and accomplishment in your part"
+//                 } */}
+//               </Typography>
+//             )}
+//           <Box component="fieldset" mb={3} borderColor="transparent">
+//             <Rating
+//               name="hover-tooltip"
+//               size="large"
+//               value={value}
+//               onChange={(event, newValue) => {
+//                 setValue(newValue);
+//               }}
+
+//               IconContainerComponent={IconContainer}
+//             />
+//             {/* <starRating/> */}
+//           </Box>
+//         </CardContent>
+//       </Card>
+//     </div>
+//   );
+// }
+
+function Media2(props,detail) {
+  const details = detail;
   const { loading = false } = props;
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   return (
-    <div>
     <Card className={classes.card}>
       <CardHeader
         avatar={
           loading ? (
             <Skeleton variant="circle" width={40} height={40} />
           ) : (
-            <Avatar
-              alt="sample stargaze"
-              src="https://img.freepik.com/free-vector/start_53876-25533.jpg?size=338&ext=jpg"
-            />
-          )
-        }
-        action={
-          loading ? null : (
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            
-            </IconButton>
-            
-          )
-        }
-        title={loading ? <Skeleton height={6} width="80%" /> : 'sample pose'}
-        subheader={loading ? <Skeleton height={6} width="40%" /> : '5 hours ago'}
-      />
-      {loading ? (
-        <Skeleton variant="rect" className={classes.media} />
-      ) : (
-        <CardMedia
-          className={classes.media}
-          image="http://localhost:400/uploads/uploadmulter"
-          title="sample pose"
-        />
-      )}
-      <CardContent>
-        {loading ? (
-          <React.Fragment>
-            <Skeleton height={6} />
-            <Skeleton height={6} width="80%" />
-          </React.Fragment>
-        ) : (
-          <Typography variant="body2" color="textSecondary" component="p">
-            {
-              "This is why we live for life: Discovering our new you is the best achievement and accomplishment in your part"
-            }
-          </Typography>
-        )}
-        <Box component="fieldset" mb={3} borderColor="transparent">
-        <Rating
-          name="hover-tooltip"
-          size = "large"
-          value={value}
-          onChange = {(event, newValue) => {
-            setValue(newValue);
-          }}
-         
-          IconContainerComponent={IconContainer}
-        />
-        {/* <starRating/> */}
-      </Box>
-      </CardContent>
-    </Card>
-    </div>
-  );
-}
-
-function Media2(props) {
-  const { loading = false } = props;
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
-  return (
-    <Card className={classes.card}>
-      <CardHeader
-        avatar={
-          loading ? (
-            <Skeleton variant="circle" width={40} height={40} />
-          ) : (
-            <Avatar
-              alt="sample stargaze"
-              src="https://img.freepik.com/free-vector/start_53876-25533.jpg?size=338&ext=jpg"
-            />
-          )
+              <Avatar
+                alt="sample stargaze"
+                src={details.imageURL}
+              />
+            )
         }
         action={
           loading ? null : (
@@ -158,12 +160,12 @@ function Media2(props) {
       {loading ? (
         <Skeleton variant="rect" className={classes.media} />
       ) : (
-        <CardMedia
-          className={classes.media}
-          image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSogaFKkN43MdizRpUi3sVyiFSgWJlfFuvBI7E995FK2VIvU1yQ"
-          title="sample pose"
-        />
-      )}
+          <CardMedia
+            className={classes.media}
+            image={details.imageURL}
+            title={details.imageDescription}
+          />
+        )}
 
       <CardContent>
         {loading ? (
@@ -172,13 +174,13 @@ function Media2(props) {
             <Skeleton height={6} width="80%" />
           </React.Fragment>
         ) : (
-          <Typography variant="body2" color="textSecondary" component="p">
-            {
-              "Be brave and be bold no matter what failure of chances may face in your passion"
-            }
-          </Typography>
-          
-        )}
+            <Typography variant="body2" color="textSecondary" component="p">
+              {
+                details.imageDescription
+              }
+            </Typography>
+
+          )}
         {/* <Box >
         <Rating
           name="simple-controlled"
@@ -193,35 +195,35 @@ function Media2(props) {
          </starRating>
       </Box> */}
         <Box component="fieldset" mb={3} borderColor="transparent">
-        {/* <Typography component="legend">Rate</Typography> */}
-        <Rating
-          name="hover-tooltip"
-          size = "large"
-          value={value}
-          onChange = {(event, newValue) => {
-            setValue(newValue);
-          }}
-         
-          IconContainerComponent={IconContainer}
-        />
-      </Box>
-      
+          {/* <Typography component="legend">Rate</Typography> */}
+          <Rating
+            name="hover-tooltip"
+            size="large"
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+
+            IconContainerComponent={IconContainer}
+          />
+        </Box>
+
       </CardContent>
     </Card>
-    
+
   );
 }
-
-Media.propTypes = {
+//i change it into media2 from media
+Media2.propTypes = {
   loading: PropTypes.bool,
 };
-
-export default function Facebook() {
+const Facebook = (props) => {
   return (
     <div>
-      <Media />
-      <Media2/>
-      <Media loading />
+        <Media2 details={props} />
     </div>
   );
 }
+
+
+export default Facebook

@@ -4,13 +4,14 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import { Form, Input, Card, Button, Icon } from 'semantic-ui-react';
 import fs from 'fs';
+import Store from "./store";
 const base = 'http://localhost:4000/uploads/';
 
 export default class ImageUpload extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      file: null,
+      file: "",
       imageDescription: ""
     };
   }
@@ -44,12 +45,15 @@ export default class ImageUpload extends React.Component {
     // console.log('handle uploading-', this.state.file);
     e.preventDefault();
     var data = new FormData();
-    data.append('img', this.state.file);
+    data.append('image', this.state.file);
+    data.append('imageDescription', this.state.imageDescription);
 
-    axios.post(`http://localhost:4000/uploads`,
+    axios.post(`http://localhost:4000/uploads/uploadmulter`,
       data
     ).then(res => {
-      console.log(res);
+      Store.feeds.push(res);
+      this.setState({ imageDescription: "", file: "" })
+
     })
       .catch(error => {
         console.error("file upload failed", error);
@@ -81,7 +85,10 @@ export default class ImageUpload extends React.Component {
   render() {
     return (
       <div>
+
         <Form.TextArea placeholder='What is new with Star?'
+          value={this.state.imageDescription}
+          required
           onChange={e => this.setState({ imageDescription: e.target.value })}
           style={{
             width: 500,
@@ -95,10 +102,13 @@ export default class ImageUpload extends React.Component {
           <input className="PhotoInput"
             type="file"
             name="img"
-            onChange={(e) => this._handleImageChange(e)}
+            key={this.state.file}
+            onChange={(e) => this._handleImageChange(e)}        
           />
           <button className="submitButton"
+            disabled ={this.state.file === "" && this.state.imageDescription === ""}
             onClick={(e) => this._handleSubmit(e)}>Upload Image</button>
+            
         </div>
       </div>
     );
