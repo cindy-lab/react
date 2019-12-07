@@ -11,6 +11,8 @@ export default class ImageUpload extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user : this.props.user,
+      post : [],
       file: "",
       imageDescription: ""
     };
@@ -45,6 +47,7 @@ export default class ImageUpload extends React.Component {
     // console.log('handle uploading-', this.state.file);
     e.preventDefault();
     var data = new FormData();
+    // data.append('userId', this.state.user.userId);
     data.append('image', this.state.file);
     data.append('imageDescription', this.state.imageDescription);
 
@@ -110,6 +113,9 @@ export default class ImageUpload extends React.Component {
             onClick={(e) => this._handleSubmit(e)}>Upload Image</button>
             
         </div>
+        {/* <div>
+          <
+        </div> */}
       </div>
     );
   }

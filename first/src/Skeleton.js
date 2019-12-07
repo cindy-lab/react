@@ -16,7 +16,8 @@ import Box from '@material-ui/core/Box';
 import starRating from './component/starRating';
 import Tooltip from '@material-ui/core/Tooltip';
 import ImageUpload from './component/ImageUpload';
-
+// import RenderToLayer from 'material-ui/internal/RenderToLayer';
+import axios from 'axios';
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 600,
@@ -43,7 +44,36 @@ const labels = {
   5: 'Excellent',
 };
 
-function IconContainer(props) {
+
+class Feed extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      user : this.props.user,
+      post : [],
+      readyToLoad : false
+    }
+  }
+  componentDidMount(){
+    axios.get(`http://localhost:4000/uploads/post`)
+    .then(res => {
+      console.log(res.data);
+      for (let index = 0; index < res.data.length; index++){
+        this.state.post.push(res.data[index]);
+      }
+      this.setState({readyToLoad : true})      
+    })
+    .catch((err)=> {
+      console.log(err);
+      
+    })
+    console.log("ComputedDidMounted");
+        
+    console.log(this.state.post);
+    
+  }
+
+ IconContainer = (props) => {
   const { value, ...other } = props;
 
   return (
@@ -128,11 +158,16 @@ function IconContainer(props) {
 //   );
 // }
 
-function Media2(props,detail) {
-  const details = detail;
-  const { loading = false } = props;
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+ Media2 = (props,detail) => {   
+
+  console.log("Media2");
+  console.log(typeof (this.state.post));
+  let val = this.state.post[0]
+  let details = JSON.parse(val)
+  //let details = {imageDescription:"detail",imageURL:"http://localhost:4000/157568722483927858239_2049636731935638_6051115142495938637_n.jpg"};  
+  let { loading = false } = props;
+  let classes = useStyles();
+  let [value, setValue] = React.useState(0);
 
   return (
     <Card className={classes.card}>
@@ -142,7 +177,7 @@ function Media2(props,detail) {
             <Skeleton variant="circle" width={40} height={40} />
           ) : (
               <Avatar
-                alt="sample stargaze"
+                alt={details.imageDescription}
                 src={details.imageURL}
               />
             )
@@ -154,7 +189,8 @@ function Media2(props,detail) {
             </IconButton>
           )
         }
-        title={loading ? <Skeleton height={6} width="80%" /> : 'sample pose'}
+        
+        title={loading ? <Skeleton height={6} width="80%" /> : details.imageDescription}
         subheader={loading ? <Skeleton height={6} width="40%" /> : '10 hours ago'}
       />
       {loading ? (
@@ -204,7 +240,7 @@ function Media2(props,detail) {
               setValue(newValue);
             }}
 
-            IconContainerComponent={IconContainer}
+            // IconContainerComponent={IconContainer}
           />
         </Box>
 
@@ -212,18 +248,33 @@ function Media2(props,detail) {
     </Card>
 
   );
+  // render(){
+  //   return(
+  //     <div>
+  //      <Media2 details={props} />
+  //   </div>
+  //   )
+  // }
+  
+  
+
 }
-//i change it into media2 from media
-Media2.propTypes = {
-  loading: PropTypes.bool,
-};
-const Facebook = (props) => {
+render () {
   return (
     <div>
-        <Media2 details={props} />
+      <this.Media2/>
     </div>
-  );
+  )
 }
+}
+//i change it into media2 from media
+// Media2.propTypes = {
+//   loading: PropTypes.bool,
+// };
+// const Facebook = (props) => {
+  // Feed();
+
+// }
 
 
-export default Facebook
+export default Feed

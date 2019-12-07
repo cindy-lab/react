@@ -90,17 +90,17 @@ const useStyles = makeStyles(theme => ({
 var posts = []
 var Feeds = () => {
   Store.populate().then(data => {
-    Store.feeds = data
+      Store.feeds = data
     localStorage.setItem("posts", JSON.stringify(data))
   })
-  console.log(Store.feeds);
+  // console.log(Store.feeds);
 
 }
 
 export default function ClippedDrawer() {
   Feeds();
   Store.feeds = JSON.parse(localStorage.getItem("posts"))
-  console.log(Store.feeds);
+  // console.log(Store.feeds);
 
   const classes = useStyles();
   return (
@@ -113,7 +113,10 @@ export default function ClippedDrawer() {
         <div className={classes.toolbar} />
         <Uploadimage />
         {Store.feeds.map(detail => {
-          return <Skeleton key={detail._id} detail={detail} />
+          console.log("Im in starfeeds");
+          // console.log(detail);
+          
+          return <Skeleton />
         })}
 
 
