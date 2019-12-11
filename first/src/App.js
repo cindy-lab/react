@@ -15,6 +15,14 @@ import StarFeed from './component/StarFeed';
 
 
 export default class App extends Component {
+
+  constructor(props){
+    super(props)
+    this.state ={
+      user :null,
+      auth:false
+    }
+  }
    render(){
     return (
       <Router>
@@ -22,7 +30,6 @@ export default class App extends Component {
         <Switch>
           <Route exact path = "/" component={Header1}/>
           <Route exact path = "/starfeed" component={StarPage}/>
-          <Route exact path = "/imageupload" component={imageUpload}/>
           <Route exact path = "/profile" component = {profile}/>
           <Route exact path = "/landing" component = {Landing}/>
         </Switch>

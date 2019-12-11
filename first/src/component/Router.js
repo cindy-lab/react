@@ -11,7 +11,7 @@ export const userRegistration = data => {
     data["Password"] = hash;
 
     return axios.post(`${base}register`, {data})
-        .then(res => res.status)
+        .then(res => res)
         .catch(err => {
             console.log(err);
             

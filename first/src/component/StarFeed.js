@@ -66,16 +66,17 @@
 //     return <Component/>
 // })
 
-import React from 'react';
+import React ,{useEffect,useState } from 'react';
 // import Header from '../Header';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Skeleton from '../Skeleton';
 import Uploadimage from './ImageUpload'
 import Store from "./store";
-
+import axios from 'axios';
 
 const drawerWidth = 300;
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -87,24 +88,40 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: theme.mixins.toolbar,
 }));
-var posts = []
-var Feeds = () => {
-  Store.populate().then(data => {
-    Store.feeds = data
-    localStorage.setItem("posts", JSON.stringify(data))
-  })
-  console.log(Store.feeds);
+// var Feeds = () => {
+//   Store.populate().then(data => {
+//     feeds = data
+//   })
+// }
 
-}
 
+var feedsData = []
 export default function ClippedDrawer() {
-  Feeds();
-  Store.feeds = JSON.parse(localStorage.getItem("posts"))
-  console.log(Store.feeds);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      // You can await here
+      const result = await axios(
+        'http://localhost:4000/uploads/post',
+        );
+        setData(result.data)
+    }
+    fetchData();
+  },[]); // Or [] if effect doesn't need props or state  
+  // const getFeeds = async ()=>{
+  //  await axios.get("http://localhost:4000/uploads/post").then(res => {
+  //  setFeeds(res.data)
+  //  feedsData = res.data
 
+  // }).catch(err => {
+  //     console.log(err)
+  // })
+  // }
+// Store.feeds = JSON.parse(localStorage.getItem("posts"))
   const classes = useStyles();
   return (
     <div className={classes.root}>
+ 
       <Drawer
         className={classes.drawer}
         variant="permanent" >
@@ -112,12 +129,11 @@ export default function ClippedDrawer() {
       <main >
         <div className={classes.toolbar} />
         <Uploadimage />
-        {Store.feeds.map(detail => {
-          return <Skeleton key={detail._id} detail={detail} />
+
+        {data.map(detail => {
+          
+          return <Skeleton key={detail._id}  props={detail} />
         })}
-
-
-
       </main>
       {/* <Header /> */}
     </div>

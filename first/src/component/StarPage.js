@@ -17,6 +17,8 @@ import StarFeed from './StarFeed';
 import {BrowserRouter as Router,Switch,Link,Route} from 'react-router-dom';
 import uploadPhoto from './ImageUpload';
 
+import Store from "./store";
+
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -85,6 +87,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function StarPage() {
+  
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -108,6 +111,9 @@ export default function StarPage() {
   const handleMobileMenuOpen = event => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+   Store.populate().then(data => {
+    localStorage.setItem("posts",JSON.stringify(data))
+  })
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (

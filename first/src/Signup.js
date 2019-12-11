@@ -74,8 +74,8 @@ class SignUp extends React.Component{
       }
     };
     const registrationStatus = await userRegistration(data);
-    
-    if(registrationStatus === 200){
+    localStorage.setItem("user" , JSON.stringify(registrationStatus.data))
+    if(registrationStatus.status === 200){
       console.log("Successful");
       this.setState({
         
