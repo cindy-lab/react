@@ -3,6 +3,8 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import { Form, Input, Card, Button, Icon } from 'semantic-ui-react';
+import { BrowserRouter as Router, Switch, Link, Route, Redirect } from 'react-router-dom';
+
 import fs from 'fs';
 import Store from "./store";
 const base = 'http://localhost:4000/uploads/';
@@ -15,6 +17,8 @@ export default class ImageUpload extends React.Component {
       imageDescription: ""
     };
   }
+
+
   // onSubmit = (e) => {
   //   e.preventDefault();
 

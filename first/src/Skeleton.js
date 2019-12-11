@@ -56,6 +56,10 @@ function IconContainer(props) {
 
 
 function Media2(props,detail) {
+  console.log("media");
+  
+  console.log(detail);
+  
   const details = detail;
   const { loading = false } = props;
   const classes = useStyles();

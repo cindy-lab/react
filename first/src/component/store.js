@@ -1,7 +1,7 @@
 import axios from "axios";
 export default {
     feeds: [],
-    populate: async file => {
+    populate: async () => {
         let data = await new Promise(resolve => {
             axios.get("http://localhost:4000/uploads/post").then(res => {
                 resolve(res.data)

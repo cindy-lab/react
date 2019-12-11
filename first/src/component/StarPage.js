@@ -96,10 +96,10 @@ class StarPage extends React.Component {
   }
 
 
+  //set up page restrictions
   componentDidMount() {
     if (localStorage.getItem("token") != null) {
-      console.log("♥");
-      
+      console.log("Auth error");
     } else {
       this.setState({ stageChecker: true })
     }
@@ -109,6 +109,7 @@ class StarPage extends React.Component {
       return <Redirect to={{ pathname: "/" }} />
     }
   }
+  //ending set up page restrictions
 
 
   StarPage = () => {
@@ -133,6 +134,10 @@ class StarPage extends React.Component {
       localStorage.clear()
       handleMobileMenuClose();
     };
+    const handleMenuClose1 = () => {
+      setAnchorEl(null);
+      handleMobileMenuClose();
+    }
 
     const handleMobileMenuOpen = event => {
       setMobileMoreAnchorEl(event.currentTarget);
@@ -148,9 +153,11 @@ class StarPage extends React.Component {
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
         onClose={handleMenuClose}
+        onClose={handleMenuClose1}
+        
       >
         <Link to="/profile">
-          <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+          <MenuItem onClick={handleMenuClose1}>Profile</MenuItem>
         </Link>
         <Link to="/landing">
           <MenuItem onClick={handleMenuClose}>Logout</MenuItem>

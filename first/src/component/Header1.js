@@ -124,7 +124,7 @@ class Header1 extends React.Component {
             
           });
           localStorage.setItem('token',res.data.token)
-
+          localStorage.setItem('login',JSON.stringify(res.data))
         } else {
           alert(res.data.sms)
           this.setState({

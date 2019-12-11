@@ -1,87 +1,3 @@
-// import React from 'react';
-// import {makeStyles } from '@material-ui/core/styles';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
-// import Button from '@material-ui/core/Button';
-// import clsx from 'clsx';
-// import TextField from '@material-ui/core/TextField';
-// import Signup from '../Signup';
-
-// const useStyles = makeStyles(theme => ({
-//     root: {
-//       flexGrow: 1,
-//     },
-//     menuButton: {
-//       marginRight: theme.spacing(2),
-//     },
-//     title: {
-//       flexGrow: 1,
-//     },
-//     apBar: {
-//       top: 'auto',
-//       bottom: 0,
-//     },
-  
-//     fabButton: {
-//       position: 'absolute',
-//       zIndex: 1,
-//       top: -30,
-//       left: 0,
-//       right: 0,
-//       margin: '0 auto',
-//     },
-//     textField: {
-//       marginLeft: theme.spacing(1),
-//       marginRight: theme.spacing(2),
-//       backgroundColor:"white",     
-//       borderRadius:4,
-//     },
-//   }));
-
-//   export default function LandingPage() {
-//     const classes = useStyles();
-//   return (
-//     <div className={classes.root}>
-//     <div>
-//     <AppBar position="fixed">
-//       <Toolbar>
-//         <Typography variant="h6" className={classes.title}>
-//           Stargaze.com
-//         </Typography>
-//         <form className={classes.container}>
-//       <div>
-//         <TextField
-//         id="email/number"
-//         label="Email/Number"
-//         className={clsx(classes.textField, classes.dense)}
-//         margin="dense"
-//         name="email"
-//         autoComplete="email"
-//         variant="filled"/>
-        
-//         <TextField
-//         id="password"   
-//         label="Password"
-//         className={clsx(classes.textField, classes.dense)}
-//         margin="dense"
-//         variant="filled"
-//         type = "password"/>
-//       </div>
-//     </form>
-//         <Button variant="contained" color="white" >Login</Button>
-//       </Toolbar>
-//     </AppBar>
-//   </div>
-//   <Signup />
-// <AppBar position="fixed" color="primary" className={classes.apBar}>
-//         <Toolbar>
-//           <Typography>Stargaze.com</Typography>
-//         </Toolbar>
-//       </AppBar>
-//       </div>
-//   );
-// }
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -98,7 +14,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import HomeIcon from '@material-ui/icons/Home';
 import StarFeed from './StarFeed';
-import {BrowserRouter as Router,Switch,Link,Route} from 'react-router-dom';
+import {BrowserRouter as Router,Switch,Link,Route,Redirect} from 'react-router-dom';
 // import uploadPhoto from './ImageUpload';
 
 
@@ -167,8 +83,13 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }));
-
-export default function StarPage() {
+class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  }
+ profilePage = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -186,9 +107,13 @@ export default function StarPage() {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+    localStorage.clear()
     handleMobileMenuClose();
   };
-
+  const handleMenuClose1 = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  }
   const handleMobileMenuOpen = event => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -203,9 +128,10 @@ export default function StarPage() {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      onClose={handleMenuClose1}
     >
      <Link to="/profile">
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose1}>Profile</MenuItem>
       </Link>
       <Link to="/landing">
       <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
@@ -226,10 +152,12 @@ export default function StarPage() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
+      <Link to ="/starfeed">
       <IconButton>
       <HomeIcon />
         </IconButton>
         <p>StarFeed</p>
+        </Link>
       </MenuItem>
       
       <MenuItem>
@@ -328,3 +256,11 @@ export default function StarPage() {
     </div>
   );
 }
+render () {
+  return(
+    <this.profilePage />
+  ) ;
+  
+}
+}
+export default Profile

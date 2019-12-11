@@ -88,8 +88,8 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 var posts = []
-var Feeds = () => {
-  Store.populate().then(data => {
+var Feeds = async () =>  {
+  await Store.populate().then(data => {
     Store.feeds = data
     localStorage.setItem("posts", JSON.stringify(data))
   })
@@ -100,7 +100,8 @@ var Feeds = () => {
 export default function ClippedDrawer() {
   Feeds();
   Store.feeds = JSON.parse(localStorage.getItem("posts"))
-  console.log(Store.feeds);
+
+  var temp_post = [...Store.feeds] //clone array
 
   const classes = useStyles();
   return (
@@ -112,12 +113,9 @@ export default function ClippedDrawer() {
       <main >
         <div className={classes.toolbar} />
         <Uploadimage />
-        {Store.feeds.map(detail => {
+        {temp_post.map(detail => {
           return <Skeleton key={detail._id} detail={detail} />
         })}
-
-
-
       </main>
       {/* <Header /> */}
     </div>
