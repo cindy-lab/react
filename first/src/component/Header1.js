@@ -17,6 +17,7 @@ import { BrowserRouter as Router, Switch, Link, Route, Redirect } from 'react-ro
 import starfeed from './StarFeed';
 // import { LOGIN_MESSAGE, ERROR_IN_LOGIN } from './message';
 import axios from 'axios';
+import Auth from './Auth';
 const base = 'http://localhost:4000/user/';
 
 
@@ -71,14 +72,22 @@ class Header1 extends React.Component {
   //   })
   // }
   handleOnClick = async e => {
+    Auth.authenticate();
+    console.log("hi");
+    
+    console.log(Auth);
+    
     axios.get(`${base}getUser/` + this.state.email)
       .then(res => {
+        console.log(res);
+        
         if (res.data != null) {
           this.setState({ loginSuccess: false, error: true, user: res.data })
           console.log(this.state.user);
 
         } else {
           this.setState({ loginSuccess: true, error: false })
+          console.log("user not found");
         }
       })
     // console.log("handle");
@@ -105,43 +114,32 @@ class Header1 extends React.Component {
     };
     axios.post(`${base}login`, data)
       .then(res => {
-        if (res.status != 200) {
+        console.log("Im here");
+        
+        console.log(res.data);
+        if (res.data.status == true && res.data.auth == true) {
           this.setState({
-            error: true,
-            loginSuccess: false,
-          });
-        } else {
-          this.setState({
+            error: false,
             loginSuccess: true,
-            error: false
+            
+          });
+          localStorage.setItem('token',res.data.token)
+
+        } else {
+          alert(res.data.sms)
+          this.setState({
+            loginSuccess: false,
+            error: true
           });
         }
       })
-
-    // const loginResult = await userLogin(data);
-
-    // if (loginResult != 200) {
-    //   this.setState({
-    //     loginSuccess: true,
-    //     error : false
-    //   });
-    // }else {
-    //   this.setState({
-    //     error : true,
-    //     loginSuccess : false
-    //   });
-    // }
   }
   render() {
-    if (this.state.loginSuccess === true) {
-      return <Redirect to="/starfeed" />;
-      console.log(this.state.user);
-
+    if (this.state.loginSuccess == true ) {
+      // Auth.getAuth()
+      return < Redirect to="/starfeed" />;
+      // console.log(this.state.user);
     } else {
-      // login = () => {
-      //     const { loginSuccess, error} = this.state;
-      //     if (!loginSuccess){
-      //       console.log("Cannot login");
       return (
         <div style={root}>
           <div>
@@ -192,37 +190,9 @@ class Header1 extends React.Component {
       {error && <Error message={ERROR_IN_LOGIN} />} */}
         </div>
       )
-      // }else {
-      //   return(
-      //     // <div>
-
-      //     // <Link  to="/starfeed">
-      //     // </Link>
-      //     // </div>
-      //     <starfeed user={this.state.user}></starfeed>
-      //   )
-      // }
+   
     }
-    // else if (loginSuccess) {
-    //   console.log("Successfully login ");
-    //   return (
-    //     < Starpage user={this.state.user}></Starpage>
-    //   )
-
-    // }
   }
-  // render () {
-  //   return (
-
-  //   )
-  // }
-  // render(){
-  //   return(
-  //     <div>
-
-  //     </div>
-  //   )
-  // }
 }
 
 
