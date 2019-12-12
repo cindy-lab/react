@@ -260,7 +260,8 @@ export default function StarPage() {
        <img src= "https://profiles.utdallas.edu/img/default.png"  className="img"></img>
     </div>
       {/* <uploadPhoto /> */}
-      <StarFeed />  
+      {localStorage.setItem("query" , JSON.parse(localStorage.getItem('user'))._id)}
+      <StarFeed  />  
     <div className={classes.grow}>
       <AppBar position="fixed">
         <Toolbar>

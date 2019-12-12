@@ -47,12 +47,14 @@ export default class ImageUpload extends React.Component {
     var data = new FormData();
     data.append('image', this.state.file);
     data.append('imageDescription', this.state.imageDescription);
+    data.append('user', JSON.parse(localStorage.getItem("user"))._id);
     // data.append('user', this.state.imageDescription);
 
     axios.post(`http://localhost:4000/uploads/uploadmulter`,
       data
     ).then(res => {
-      Store.feeds.push(res);
+      
+      window.location.reload()
       this.setState({ imageDescription: "", file: "" })
 
     })

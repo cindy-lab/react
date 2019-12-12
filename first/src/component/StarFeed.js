@@ -5,7 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Skeleton from '../Skeleton';
 import Uploadimage from './ImageUpload'
 import axios from 'axios';
-
+import Store from "./store"
 const drawerWidth = 300;
 
 const useStyles = makeStyles(theme => ({
@@ -24,12 +24,13 @@ export default function ClippedDrawer() {
     async function fetchData() {
       // You can await here
       const result = await axios(
-        'http://localhost:4000/uploads/post',
+        'http://localhost:4000/uploads/post/'+localStorage.getItem('query'),
         );
         setData(result.data)
     }
     fetchData();
   },[]); 
+  Store.feeds = data;
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -42,7 +43,7 @@ export default function ClippedDrawer() {
         <div className={classes.toolbar} />
         <Uploadimage />
 
-        {data.map(detail => {
+        {Store.feeds.map(detail => {
           return <Skeleton key={detail._id}  props={detail} />
         })}
       </main>

@@ -108,11 +108,18 @@ class SignUp extends React.Component{
     }
   };
 
-  
- render(){
-  if(this.state.toDashboard === true){
-    return <Redirect to="/starfeed" />;
+  componentDidMount() {
+    if (localStorage.getItem("user") != null) {
+      return <Redirect to={{ pathname: "/starfeed" }} />
+    } else {
+      this.setState({ stageChecker: true })
+    }
   }
+
+ render(){
+  if (localStorage.getItem('user')) {
+    return <Redirect to="/starfeed" />;
+  } else {
   
   // const height = 55
 
@@ -284,6 +291,7 @@ class SignUp extends React.Component{
       </Grid>
     </Grid>
   );
+        }
 }
 }
 

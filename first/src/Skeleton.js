@@ -127,27 +127,9 @@ function IconContainer(props) {
 //   );
 // }
 
-// const handleClick = (e ) => {
-//   console.log(e.target.value);
-//   console.log(e)
-
-  
-//   // ( newValue) => {
-//   //   console.log(event)
-//   //   setValue(newValue);
-//   //   var user = JSON.parse(localStorage.getItem("user"))
-//   //   axios.get(`http://localhost:4000/uploads/rate/${user._id}/${details._id}/${newValue}`).
-//   //   then(res=>{
-//   //     console.log(res)
-//   //   })
-//   //   .catch(err=>{
-//   //     console.log(err)
-
-//   //   })
-
-//   //   return 0
-//   // }
-// }
+const handleClick = e => {
+  // do something
+}
 
 function Media2(props) {
   const details = props.details.props;
@@ -174,7 +156,7 @@ function Media2(props) {
             </IconButton>
           )
         }
-        title={loading ? <Skeleton height={6} width="80%" /> : details.user}
+        title={loading ? <Skeleton height={6} width="80%" /> : details.userId? details.userId.FirstName + " "+ details.userId.LastName : '' }
         subheader={new Date(details.created_at).toDateString()
       }
       />
@@ -205,11 +187,24 @@ function Media2(props) {
 
      
         {/* <Rating
+          key={details._id}  
           name="simple-controlled"
           value={value}
-          id={details._id}
+          id={details}
           size="large"
-          onClick={handleClick.bind(this)}
+          onChange={(event, newValue) => {
+            console.log(event)
+            setValue(newValue);
+            var user = JSON.parse(localStorage.getItem("user"))
+            axios.get(`http://localhost:4000/uploads/rate/${user._id}/${details._id}/${newValue}`).
+            then(res=>{
+              console.log(res)
+            })
+            .catch(err=>{
+              console.log(err)
+
+            })
+          }}
         /> */}
       
         {/* <Box component="fieldset" mb={3} borderColor="transparent">

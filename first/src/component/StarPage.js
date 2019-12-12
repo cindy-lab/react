@@ -96,7 +96,7 @@ class StarPage extends React.Component {
 
   //set up page restrictions
   componentDidMount() {
-    if (localStorage.getItem("token") != null) {
+    if (localStorage.getItem("user") != null) {
       return <Redirect to={{ pathname: "/starfeed" }} />
     } else {
       this.setState({ stageChecker: true })
@@ -209,8 +209,7 @@ class StarPage extends React.Component {
     return (
 
       <div>
-        {/* <uploadPhoto /> */}
-
+        {localStorage.setItem("query" , null)}
         <StarFeed />
         <div className={classes.grow}>
           <AppBar position="fixed">
