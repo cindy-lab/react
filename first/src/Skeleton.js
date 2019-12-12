@@ -13,9 +13,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Skeleton from '@material-ui/lab/Skeleton';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
-import starRating from './component/starRating';
 import Tooltip from '@material-ui/core/Tooltip';
-import ImageUpload from './component/ImageUpload';
 import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
@@ -129,13 +127,33 @@ function IconContainer(props) {
 //   );
 // }
 
+// const handleClick = (e ) => {
+//   console.log(e.target.value);
+//   console.log(e)
+
+  
+//   // ( newValue) => {
+//   //   console.log(event)
+//   //   setValue(newValue);
+//   //   var user = JSON.parse(localStorage.getItem("user"))
+//   //   axios.get(`http://localhost:4000/uploads/rate/${user._id}/${details._id}/${newValue}`).
+//   //   then(res=>{
+//   //     console.log(res)
+//   //   })
+//   //   .catch(err=>{
+//   //     console.log(err)
+
+//   //   })
+
+//   //   return 0
+//   // }
+// }
+
 function Media2(props) {
   const details = props.details.props;
   const { loading = false } = props;
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  console.log(details)
-
   return (
     <Card className={classes.card}>
       <CardHeader
@@ -184,34 +202,30 @@ function Media2(props) {
             </Typography>
 
           )}
-        {/* <Box >
-        <Rating
+
+     
+        {/* <Rating
           name="simple-controlled"
-          size="large"
           value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-          IconContainerComponent={IconContainer}
-        />
-        
-         </starRating>
-      </Box> */}
-        <Box component="fieldset" mb={3} borderColor="transparent">
-          {/* <Typography component="legend">Rate</Typography> */}
+          id={details._id}
+          size="large"
+          onClick={handleClick.bind(this)}
+        /> */}
+      
+        {/* <Box component="fieldset" mb={3} borderColor="transparent">
           <Rating
             name="simple-controlled"
             size="large"
-            value={value}
+            _id={details._id}
+            value={!details.ratings?0:details.ratings}
             onChange={(event, newValue) => {
               setValue(newValue);
-              // axios.post()
             }}
 
             IconContainerComponent={IconContainer}
           />
   
-        </Box>   
+        </Box>    */}
 
       </CardContent>
     </Card>

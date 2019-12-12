@@ -39,11 +39,12 @@ export default function HoverRating() {
       <Box component="fieldset" mb={3} borderColor="transparent">
         <Typography component="legend">Rate</Typography>
         <Rating
-          name="hover-tooltip"
+         name="simple-controlled"
           size = "large"
           value={value}
           onChange = {(event, newValue) => {
             setValue(newValue);
+            
           }}
          
           IconContainerComponent={IconContainer}

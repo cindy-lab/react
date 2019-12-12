@@ -14,10 +14,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import HomeIcon from '@material-ui/icons/Home';
 import StarFeed from './StarFeed';
-import {BrowserRouter as Router,Switch,Link,Route} from 'react-router-dom';
-import uploadPhoto from './ImageUpload';
+// import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Link, Route, Redirect } from 'react-router-dom';
 
-import Store from "./store";
 
 
 const useStyles = makeStyles(theme => ({
@@ -85,167 +84,212 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }));
+class StarPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: localStorage.getItem('token'),
+      stageChecker: false
+    }
+  }
 
-export default function StarPage() {
-  
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  //set up page restrictions
+  componentDidMount() {
+    if (localStorage.getItem("token") != null) {
+      return <Redirect to={{ pathname: "/starfeed" }} />
+    } else {
+      this.setState({ stageChecker: true })
+    }
+  }
+  routes = () => {
+    if (this.state.stageChecker) {
+      return <Redirect to={{ pathname: "/" }} />
+    }
+  }
+  //ending set up page restrictions
 
-  const handleProfileMenuOpen = event => {
-    setAnchorEl(event.currentTarget);
-  };
 
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
+  StarPage = () => {
+    const classes = useStyles();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
+    const isMenuOpen = Boolean(anchorEl);
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleMobileMenuOpen = event => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-   Store.populate().then(data => {
-    localStorage.setItem("posts",JSON.stringify(data))
-  })
+    const handleProfileMenuOpen = event => {
+      setAnchorEl(event.currentTarget);
+    };
 
-  const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <Link to="/profile">
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      </Link>
-      <Link to="/landing">
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
-      </Link>
-    </Menu>
-  );
+    const handleMobileMenuClose = () => {
+      setMobileMoreAnchorEl(null);
+    };
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
-    
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      
-      <MenuItem> 
-      <IconButton>
-      <HomeIcon />
-        </IconButton>    
-        <p>StarFeed</p>
-      </MenuItem>
-      <MenuItem>
-      <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-      </IconButton>
-      <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Account</p>
-      </MenuItem>
-    </Menu>
-  );
+    const handleMenuClose = () => {
+      setAnchorEl(null);
+      // Auth.signout();
+      localStorage.clear()
+      handleMobileMenuClose();
+    };
+    const handleMenuClose1 = () => {
+      setAnchorEl(null);
+      handleMobileMenuClose();
+    }
 
-  return (
-   
-    <div>
-      {/* <uploadPhoto /> */}
+    const handleMobileMenuOpen = event => {
+      setMobileMoreAnchorEl(event.currentTarget);
+    };
 
-      <StarFeed />  
-    <div className={classes.grow}>
-      <AppBar position="fixed">
-        <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-           Stargaze.com
+    const menuId = 'primary-search-account-menu';
+    let renderMenu = (
+      <Menu
+        anchorEl={anchorEl}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        id={menuId}
+        keepMounted
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={isMenuOpen}
+        onClose={handleMenuClose}
+        onClose={handleMenuClose1}
+        
+      >
+        <Link to="/profile">
+          <MenuItem onClick={handleMenuClose1}>Profile</MenuItem>
+        </Link>
+        <Link to="/landing">
+          <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+        </Link>
+      </Menu>
+    );
+
+    const mobileMenuId = 'primary-search-account-menu-mobile';
+    let renderMobileMenu = (
+      <Menu
+        anchorEl={mobileMoreAnchorEl}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        id={mobileMenuId}
+        keepMounted
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={isMobileMenuOpen}
+        onClose={handleMobileMenuClose}
+      >
+
+        <MenuItem>
+          <IconButton>
+            <HomeIcon />
+          </IconButton>
+          <p>StarFeed</p>
+        </MenuItem>
+        <MenuItem>
+          <IconButton aria-label="show 17 new notifications" color="inherit">
+            <Badge badgeContent={17} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <p>Notifications</p>
+        </MenuItem>
+        <MenuItem onClick={handleProfileMenuOpen}>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+          <p>Account</p>
+        </MenuItem>
+      </Menu>
+    );
+
+
+
+
+    return (
+
+      <div>
+        {/* <uploadPhoto /> */}
+
+        <StarFeed />
+        <div className={classes.grow}>
+          <AppBar position="fixed">
+            <Toolbar>
+              <Typography className={classes.title} variant="h6" noWrap>
+                Stargaze.com
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-          <Link to="/starfeed">
-          <MenuItem>
-      <HomeIcon/>
-        <Typography>StarFeed</Typography>
-      </MenuItem>
-      </Link>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
-        </Toolbar>    
-        <AppBar position="fixed" color="primary" className={classes.appBar}>
-        <Toolbar>
-         <Typography>Stargaze.com</Typography>
-        </Toolbar>
-      </AppBar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
-    </div>
-  );
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  placeholder="Search…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+              </div>
+              <div className={classes.grow} />
+              <div className={classes.sectionDesktop}>
+                <Link to="/starfeed">
+                  <MenuItem>
+                    <HomeIcon />
+                    <Typography>StarFeed</Typography>
+                  </MenuItem>
+                </Link>
+                <IconButton aria-label="show 17 new notifications" color="inherit">
+                  <Badge badgeContent={17} color="secondary">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+                <IconButton
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+              </div>
+              <div className={classes.sectionMobile}>
+                <IconButton
+                  aria-label="show more"
+                  aria-controls={mobileMenuId}
+                  aria-haspopup="true"
+                  onClick={handleMobileMenuOpen}
+                  color="inherit"
+                >
+                  <MoreIcon />
+                </IconButton>
+              </div>
+            </Toolbar>
+            <AppBar position="fixed" color="primary" className={classes.appBar}>
+              <Toolbar>
+                <Typography>Stargaze.com</Typography>
+              </Toolbar>
+            </AppBar>
+          </AppBar>
+          {renderMobileMenu}
+          {renderMenu}
+        </div>
+      </div>
+    );
+
+
+  }
+
+  render() {
+    return (
+      <div>
+        <this.StarPage />
+        {this.routes()}
+      </div>
+    )
+  }
 }
+
+export default StarPage

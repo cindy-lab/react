@@ -71,16 +71,15 @@ class Header1 extends React.Component {
   //   })
   // }
   handleOnClick = async e => {
-    axios.get(`${base}getUser/` + this.state.email)
-      .then(res => {
-        if (res.data != null) {
-          this.setState({ loginSuccess: false, error: true, user: res.data })
-          console.log(this.state.user);
-
-        } else {
-          this.setState({ loginSuccess: true, error: false })
-        }
-      })
+    // axios.get(`${base}getUser/` + this.state.email)
+    //   .then(res => {
+    //     if (res.data != null) {
+    //       this.setState({ loginSuccess: false, error: true, user: res.data })
+    //       localStorage.setItem("user" , JSON.stringify(this.state.user))
+    //     } else {
+    //       this.setState({ loginSuccess: true, error: false })
+    //     }
+    //   })
     // console.log("handle");
     // const data = {
     //   Email : this.state.email,
@@ -105,38 +104,31 @@ class Header1 extends React.Component {
     };
     axios.post(`${base}login`, data)
       .then(res => {
-        if (res.status != 200) {
+        console.log("Im here");
+        
+        console.log(res.data);
+        if (res.data.status == true && res.data.auth == true) {
           this.setState({
-            error: true,
-            loginSuccess: false,
-          });
-        } else {
-          this.setState({
+            error: false,
             loginSuccess: true,
-            error: false
+            
+          });
+          
+          localStorage.setItem('token',res.data.token)
+          localStorage.setItem('user',JSON.stringify(res.data.user))
+          return <Redirect to="/starfeed" />;
+        } else {
+          alert(res.data.sms)
+          this.setState({
+            loginSuccess: false,
+            error: true
           });
         }
       })
-
-    // const loginResult = await userLogin(data);
-
-    // if (loginResult != 200) {
-    //   this.setState({
-    //     loginSuccess: true,
-    //     error : false
-    //   });
-    // }else {
-    //   this.setState({
-    //     error : true,
-    //     loginSuccess : false
-    //   });
-    // }
   }
   render() {
-    if (this.state.loginSuccess === true) {
+    if (localStorage.getItem('token')) {
       return <Redirect to="/starfeed" />;
-      console.log(this.state.user);
-
     } else {
       // login = () => {
       //     const { loginSuccess, error} = this.state;
@@ -177,7 +169,7 @@ class Header1 extends React.Component {
                   </div>
                 </form>
                 <Link to="/">
-                  <Button variant="contained" color='Blue' onClick={(e) => { this.onSubmit(e); this.handleOnClick() }}  >Login</Button>
+                  <Button variant="contained" color='Blue' onClick={(e) => { this.onSubmit(e)}}  >Login</Button>
                 </Link>
               </Toolbar>
             </AppBar>
